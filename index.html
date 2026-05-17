@@ -492,7 +492,7 @@ footer{
     </div>
   </div>
   <div class="sig-right">
-    <span class="sig-tag">✦ Fait avec Claude AI</span>
+    <span class="sig-tag">✦ Veille préparée et structurée</span>
     <span>· Mai 2026</span>
   </div>
 </div>
@@ -501,7 +501,7 @@ footer{
   <div class="logo">Si<em>g</em>nal</div>
   <div class="header-pill">
     <span class="live-dot"></span>
-    IA · temps réel
+    Veille personnelle
   </div>
   <div class="header-r">
     <div class="date-lbl" id="date-lbl"></div>
@@ -518,7 +518,7 @@ footer{
   <div class="hero">
     <div class="hero-eyebrow">veille technologique · mai 2026</div>
     <div class="hero-title">La tech<br>d'aujourd'<em>hui</em></div>
-    <p class="hero-sub">Actualités, bulletins de sécurité et recommandations curatées par intelligence artificielle, en un seul regard.</p>
+    <p class="hero-sub">Actualités, bulletins de sécurité et recommandations sélectionnés pour garder une vision claire de la tech.</p>
   </div>
 
   <!-- ═══ SECTION 1 : ACTU ═══ -->
@@ -615,13 +615,13 @@ footer{
           Tout a commencé par une conviction simple : <strong>les outils qu'on utilise au quotidien méritent mieux qu'un flux RSS ou un bookmark oublié.</strong> Je voulais créer quelque chose que j'aurais moi-même envie d'ouvrir chaque matin.
         </p>
         <p>
-          Plutôt que de passer des heures à coder une interface, à configurer des APIs, à écrire du CSS — j'ai décidé de <strong>collaborer avec une IA de bout en bout.</strong> Le design, le code, le contenu, la logique : tout a été pensé et construit avec Claude.
+          J'ai voulu construire une page simple, lisible et agréable, capable de regrouper les sujets importants sans se perdre dans trop d'onglets, de flux ou de bruit.
         </p>
         <p>
-          Ce projet est aussi une démonstration. Une preuve par l'exemple que <strong>l'IA n'est pas là pour remplacer la créativité humaine</strong> — elle est là pour l'amplifier. Pour transformer une idée vague en quelque chose de réel, en quelques heures.
+          Ce projet est aussi un exercice concret : organiser l'information, hiérarchiser les sujets et présenter une veille technique sous une forme claire.
         </p>
         <div class="footer-highlight">
-          « Avec l'IA, la limite n'est plus technique. Elle est imaginaire. Tout ce qu'on peut concevoir, on peut le construire. »
+          « Une bonne veille ne consiste pas à tout lire, mais à repérer ce qui mérite vraiment l'attention. »
         </div>
       </div>
     </div>
@@ -631,8 +631,8 @@ footer{
         <div class="fstack-label">Stack du projet</div>
         <div class="footer-stack">
           <div class="fstack-item"><span>Interface</span><span>HTML · CSS · JS vanilla</span></div>
-          <div class="fstack-item"><span>Intelligence</span><span>Claude Sonnet 4</span></div>
-          <div class="fstack-item"><span>Contenu</span><span>Généré en temps réel</span></div>
+          <div class="fstack-item"><span>Contenu</span><span>Sélection éditoriale</span></div>
+          <div class="fstack-item"><span>Données</span><span>Intégrées au fichier HTML</span></div>
           <div class="fstack-item"><span>Design</span><span>Glassmorphism · Blobs</span></div>
           <div class="fstack-item"><span>Hébergement</span><span>1 fichier HTML</span></div>
         </div>
@@ -656,7 +656,7 @@ footer{
   <div class="footer-bottom">
     <div class="footer-bottom-sig">Ounchiouene <em>Maheydine</em></div>
     <div>signal · veille tech · mai 2026</div>
-    <div>Propulsé par Claude AI · Anthropic</div>
+    <div>Page statique · GitHub Pages</div>
   </div>
 </footer>
 
@@ -700,183 +700,95 @@ window.addEventListener('scroll',()=>{
 });
 function scrollTo(hash){document.querySelector(hash)?.scrollIntoView({behavior:'smooth'});}
 
-// ── API ──
-async function callClaude(prompt){
-  const res = await fetch("https://api.anthropic.com/v1/messages",{
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({
-      model:"claude-sonnet-4-20250514",
-      max_tokens:1600,
-      system:"Réponds UNIQUEMENT avec du JSON valide. Aucun texte, aucun backtick.",
-      messages:[{role:"user",content:prompt}]
-    })
-  });
-  const d = await res.json();
-  const raw = d.content.map(b=>b.text||'').join('').replace(/```json|```/g,'').trim();
-  return JSON.parse(raw);
-}
+// ── DONNÉES PRÉPARÉES ──
+const ACTU_DATA = {
+  ticker: [
+    "Linux améliore régulièrement la gestion matérielle récente",
+    "Les assistants locaux gagnent en intérêt côté confidentialité",
+    "La sécurité supply chain reste un sujet prioritaire",
+    "Le cloud hybride continue de progresser dans les entreprises",
+    "Les outils open source de supervision restent essentiels"
+  ],
+  news: [
+    {cat:"Open Source",title:"Linux reste au centre de l'infrastructure moderne",summary:"Le noyau Linux continue d'évoluer avec des améliorations matérielles, réseau et sécurité. Pour un profil système/réseau, suivre ces évolutions aide à comprendre les bases des serveurs modernes.",impact:"Élevé",time:"Sélection du jour"},
+    {cat:"IA",title:"Les modèles locaux attirent de plus en plus",summary:"Les entreprises et les particuliers s'intéressent davantage aux modèles exécutés en local. L'objectif est de mieux contrôler les données, les coûts et la confidentialité.",impact:"Moyen",time:"Tendance"},
+    {cat:"Cloud",title:"Le cloud hybride devient plus courant",summary:"Beaucoup d'organisations combinent serveurs internes, cloud public et services managés. Cette approche demande de bonnes bases réseau, sécurité et automatisation.",impact:"Élevé",time:"À suivre"},
+    {cat:"Dev",title:"L'automatisation reste une compétence clé",summary:"Scripts, tâches planifiées et pipelines simples permettent de gagner du temps et de réduire les erreurs. Même de petits outils Bash ou Python peuvent apporter une vraie valeur.",impact:"Moyen",time:"Pratique"},
+    {cat:"Data",title:"Les données doivent être mieux gouvernées",summary:"La qualité, la traçabilité et la protection des données deviennent des sujets centraux. Les équipes techniques doivent savoir où sont stockées les données et comment elles circulent.",impact:"Moyen",time:"Contexte"},
+    {cat:"Open Source",title:"Les outils libres structurent la veille technique",summary:"Documentation, dépôts GitHub, blogs techniques et changelogs restent des sources importantes. Ils permettent de suivre les évolutions sans dépendre uniquement des réseaux sociaux.",impact:"Faible",time:"Ressource"},
+    {cat:"Cloud",title:"La maîtrise des coûts cloud devient critique",summary:"Les dépenses cloud peuvent augmenter rapidement sans suivi. Comprendre les ressources, les logs et les alertes aide à éviter les mauvaises surprises.",impact:"Moyen",time:"Gestion"}
+  ]
+};
+
+const VEILLE_DATA = [
+  {cat:"Sécurité",title:"Surveiller les CVE critiques chaque semaine",summary:"Les failles critiques touchant les systèmes exposés doivent être identifiées rapidement. Une veille simple consiste à suivre CERT-FR, CISA KEV et les bulletins éditeurs.",impact:"Élevé",source:"CERT-FR / CISA",time:"Priorité"},
+  {cat:"Système",title:"Les mises à jour Linux restent une base de sécurité",summary:"Un serveur non maintenu devient vite fragile. La gestion des paquets, des dépôts et des redémarrages planifiés fait partie des bonnes pratiques système.",impact:"Élevé",source:"Linux",time:"Routine"},
+  {cat:"Réseau",title:"DNS et certificats méritent une surveillance régulière",summary:"Beaucoup d'incidents viennent d'un certificat expiré ou d'une mauvaise configuration DNS. Documenter les domaines, TTL et dates d'expiration évite des coupures inutiles.",impact:"Moyen",source:"Ops",time:"Prévention"},
+  {cat:"DevOps",title:"Les sauvegardes doivent être testées, pas seulement créées",summary:"Une sauvegarde n'a de valeur que si la restauration fonctionne. Il faut prévoir des tests réguliers et noter clairement la procédure de retour arrière.",impact:"Élevé",source:"Bonnes pratiques",time:"À vérifier"},
+  {cat:"Open Source",title:"Les changelogs indiquent souvent les risques à venir",summary:"Lire les notes de version permet de repérer les changements cassants et les corrections importantes. C'est utile avant de mettre à jour un service en production.",impact:"Faible",source:"GitHub",time:"Lecture"},
+  {cat:"Sécurité",title:"MFA et mots de passe restent incontournables",summary:"L'authentification multifacteur réduit fortement les risques de compromission. Elle doit être activée en priorité sur les comptes mail, cloud, GitHub et administration.",impact:"Élevé",source:"Hygiène sécurité",time:"Indispensable"},
+  {cat:"Réseau",title:"La segmentation limite l'impact d'un incident",summary:"Séparer les services, postes utilisateurs et environnements sensibles limite les déplacements latéraux. Même une segmentation simple améliore déjà la sécurité globale.",impact:"Moyen",source:"Architecture",time:"Conception"},
+  {cat:"Système",title:"Les journaux système aident à comprendre les incidents",summary:"Les logs systemd, SSH, pare-feu et applications donnent souvent les premiers indices. Savoir les consulter rapidement est une compétence très utile en support infrastructure.",impact:"Moyen",source:"Linux",time:"Diagnostic"},
+  {cat:"DevOps",title:"Infrastructure as Code : utile même à petite échelle",summary:"Décrire une configuration dans des fichiers rend les changements plus lisibles et reproductibles. Même un petit lab peut bénéficier d'une structure claire et versionnée.",impact:"Faible",source:"IaC",time:"Méthode"}
+];
+
+const RECO_DATA = [
+  {type:"Outil",icon:"🐧",title:"journalctl",desc:"Commande essentielle pour lire les logs systemd sur Linux. Elle aide à diagnostiquer les services qui échouent, les erreurs de démarrage et les événements système.",why:"Très utile pour progresser en administration Linux.",meta:"Linux · Diagnostic"},
+  {type:"Outil",icon:"🌐",title:"dig",desc:"Outil simple pour interroger le DNS et comprendre la résolution de noms. Il permet de vérifier les enregistrements A, MX, TXT, NS ou CNAME.",why:"Base importante pour le réseau et l'hébergement web.",meta:"DNS · Réseau"},
+  {type:"Lecture",icon:"📘",title:"Guides de l'ANSSI",desc:"L'ANSSI publie des recommandations accessibles sur l'hygiène informatique, l'administration sécurisée et la protection des systèmes. C'est une source sérieuse pour structurer sa veille.",why:"Bon repère francophone pour la cybersécurité.",meta:"Sécurité · France"},
+  {type:"Repository",icon:"⚙️",title:"awesome-selfhosted",desc:"Liste de logiciels libres que l'on peut héberger soi-même. Elle permet de découvrir des services utiles pour apprendre Docker, Linux, reverse proxy et sauvegardes.",why:"Parfait pour trouver des idées de labs personnels.",meta:"GitHub · Open Source"},
+  {type:"Outil",icon:"🔒",title:"OpenSSH",desc:"Brique centrale pour administrer des machines à distance. Comprendre les clés, le fichier ssh_config et les permissions est indispensable.",why:"Compétence de base pour système, réseau et cloud.",meta:"SSH · Administration"},
+  {type:"Vidéo",icon:"🎥",title:"Démonstrations de labs réseau",desc:"Les vidéos pratiques sur VLAN, routage, DNS ou pare-feu aident à visualiser les concepts. L'idéal est de reproduire ensuite les manipulations dans un petit lab local.",why:"Apprendre en testant rend les notions plus solides.",meta:"Réseau · Pratique"}
+];
 
 // ── HELPERS ──
-function cc(cat){
-  return {IA:'ia',Data:'da',Dev:'de',Cloud:'cl','Sécurité':'se','Open Source':'os',Réseau:'re',Système:'re',DevOps:'de'}[cat]||'da';
-}
+function cc(cat){return {IA:'ia',Data:'da',Dev:'de',Cloud:'cl','Sécurité':'se','Open Source':'os',Réseau:'re',Système:'re',DevOps:'de'}[cat]||'da';}
 function ic(lvl){return {Élevé:'i-h',Fort:'i-h',Moyen:'i-m',Faible:'i-l'}[lvl]||'';}
 function rtClass(t){return {Outil:'rt-outil',Lecture:'rt-lecture',Article:'rt-lecture',Vidéo:'rt-video',Podcast:'rt-podcast',Repository:'rt-repo',GitHub:'rt-repo',Librairie:'rt-repo'}[t]||'rt-outil';}
 
 function makeCard(item,isMain=false){
-  const c=document.createElement('div');
-  c.className=`card ${isMain?'card-main':''}`;
+  const c=document.createElement('div'); c.className=`card ${isMain?'card-main':''}`;
   const cls=cc(item.cat), icls=ic(item.impact);
-  c.innerHTML=`
-    <div class="cpill ${cls}"><span class="cpill-dot"></span>${item.cat}</div>
-    <div class="c-title">${item.title}</div>
-    <div class="c-summary">${item.summary}</div>
-    <div class="c-footer">
-      <span class="c-time">${item.time||''}</span>
-      ${icls?`<span class="ibadge ${icls}">${item.impact}</span>`:''}
-      <span class="c-arrow">→</span>
-    </div>`;
+  c.innerHTML=`<div class="cpill ${cls}"><span class="cpill-dot"></span>${item.cat}</div><div class="c-title">${item.title}</div><div class="c-summary">${item.summary}</div><div class="c-footer"><span class="c-time">${item.time||''}</span>${icls?`<span class="ibadge ${icls}">${item.impact}</span>`:''}<span class="c-arrow">→</span></div>`;
   return c;
 }
 
 // ── ACTU ──
 let veilleAll=[];
-async function loadActu(){
-  const c=document.getElementById('actu-container');
-  c.innerHTML=`<div class="loader"><div class="spin-ring"></div><div class="loader-txt">Analyse des sources tech…</div></div>`;
-  try{
-    const data=await callClaude(`Génère 7 actualités tech importantes pour mai 2026. Catégories: IA, Data, Dev, Cloud, Open Source.
-JSON exact:
-{"ticker":["Flash 1","Flash 2","Flash 3","Flash 4","Flash 5"],"news":[{"cat":"IA","title":"Titre max 9 mots","summary":"Résumé 2-3 phrases précises.","impact":"Élevé","time":"Il y a 2h"}]}
-7 news. La 1ère est la plus importante (featured). Impact: Élevé/Moyen/Faible.`);
-
-    const ticks=[...(data.ticker||[]),...(data.ticker||[])];
-    document.getElementById('ticker-inner').innerHTML=
-      ticks.map(t=>`<div class="ticker-item"><span class="t-sep">◆</span>${t}</div>`).join('');
-
-    document.getElementById('actu-meta').textContent=
-      `${data.news.length} articles · ${NOW.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})}`;
-
-    c.innerHTML='';
-    const featured=document.createElement('div');
-    featured.className='actu-featured';
-    featured.appendChild(makeCard(data.news[0],true));
-    const side=document.createElement('div');
-    side.className='actu-side';
-    [data.news[1],data.news[2]].forEach(n=>side.appendChild(makeCard(n)));
-    featured.appendChild(side);
-    c.appendChild(featured);
-
-    if(data.news.length>3){
-      const row=document.createElement('div');
-      row.className='actu-row';
-      row.style.marginTop='12px';
-      data.news.slice(3).forEach(n=>row.appendChild(makeCard(n)));
-      c.appendChild(row);
-    }
-    stagger(c);
-  }catch(e){
-    c.innerHTML=`<div class="err-box">⚠ ${e.message}</div>`;
-  }
-}
-
-// ── VEILLE ──
-async function loadVeille(){
-  const c=document.getElementById('veille-container');
-  c.innerHTML=`<div class="loader" style="grid-column:1/-1"><div class="spin-ring"></div><div class="loader-txt">Scan des flux…</div></div>`;
-  try{
-    const data=await callClaude(`Génère 9 actualités de veille informatique professionnelle pour mai 2026. Catégories: Sécurité (CVE, failles), Réseau, Système, DevOps, Open Source.
-JSON exact:
-{"news":[{"cat":"Sécurité","title":"Titre technique","summary":"2 phrases avec détails concrets.","impact":"Élevé","source":"CERT-FR","time":"Il y a 3h"}]}
-9 items. Varie les catégories. Impact: Élevé/Moyen/Faible.`);
-
-    veilleAll=data.news||[];
-    document.getElementById('veille-meta').textContent=
-      `${veilleAll.length} bulletins · ${NOW.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})}`;
-    renderVeille('all');
-  }catch(e){
-    c.innerHTML=`<div class="err-box" style="grid-column:1/-1">⚠ ${e.message}</div>`;
-  }
-}
-
-function renderVeille(filter){
-  const c=document.getElementById('veille-container');
-  const items=filter==='all'?veilleAll:veilleAll.filter(n=>n.cat===filter);
-  if(!items.length){c.innerHTML=`<div class="loader" style="grid-column:1/-1;color:var(--muted)">Aucun résultat.</div>`;return;}
+function loadActu(){
+  const c=document.getElementById('actu-container'); const data=ACTU_DATA;
+  const ticks=[...data.ticker,...data.ticker];
+  document.getElementById('ticker-inner').innerHTML=ticks.map(t=>`<div class="ticker-item"><span class="t-sep">◆</span>${t}</div>`).join('');
+  document.getElementById('actu-meta').textContent=`${data.news.length} sujets · ${NOW.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})}`;
   c.innerHTML='';
-  items.forEach(item=>{
-    const cls=cc(item.cat),icls=ic(item.impact);
-    const card=document.createElement('div');
-    card.className='card';
-    card.innerHTML=`
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
-        <div class="cpill ${cls}"><span class="cpill-dot"></span>${item.cat}</div>
-        ${item.source?`<span style="font-family:'Fira Code',monospace;font-size:9px;color:var(--muted)">${item.source}</span>`:''}
-      </div>
-      <div class="c-title">${item.title}</div>
-      <div class="c-summary">${item.summary}</div>
-      <div class="c-footer">
-        <span class="c-time">${item.time||''}</span>
-        ${icls?`<span class="ibadge ${icls}">${item.impact}</span>`:''}
-        <span class="c-arrow">→</span>
-      </div>`;
-    c.appendChild(card);
-  });
+  const featured=document.createElement('div'); featured.className='actu-featured'; featured.appendChild(makeCard(data.news[0],true));
+  const side=document.createElement('div'); side.className='actu-side'; [data.news[1],data.news[2]].forEach(n=>side.appendChild(makeCard(n))); featured.appendChild(side); c.appendChild(featured);
+  if(data.news.length>3){const row=document.createElement('div'); row.className='actu-row'; row.style.marginTop='12px'; data.news.slice(3).forEach(n=>row.appendChild(makeCard(n))); c.appendChild(row);}
   stagger(c);
 }
 
-function filterV(cat,btn){
-  document.querySelectorAll('#veille-filters .fb').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  renderVeille(cat);
+// ── VEILLE ──
+function loadVeille(){veilleAll=VEILLE_DATA; document.getElementById('veille-meta').textContent=`${veilleAll.length} bulletins · ${NOW.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})}`; renderVeille('all');}
+function renderVeille(filter){
+  const c=document.getElementById('veille-container'); const items=filter==='all'?veilleAll:veilleAll.filter(n=>n.cat===filter);
+  if(!items.length){c.innerHTML=`<div class="loader" style="grid-column:1/-1;color:var(--muted)">Aucun résultat.</div>`;return;}
+  c.innerHTML='';
+  items.forEach(item=>{const cls=cc(item.cat),icls=ic(item.impact); const card=document.createElement('div'); card.className='card'; card.innerHTML=`<div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><div class="cpill ${cls}"><span class="cpill-dot"></span>${item.cat}</div>${item.source?`<span style="font-family:'Fira Code',monospace;font-size:9px;color:var(--muted)">${item.source}</span>`:''}</div><div class="c-title">${item.title}</div><div class="c-summary">${item.summary}</div><div class="c-footer"><span class="c-time">${item.time||''}</span>${icls?`<span class="ibadge ${icls}">${item.impact}</span>`:''}<span class="c-arrow">→</span></div>`; c.appendChild(card);});
+  stagger(c);
 }
+function filterV(cat,btn){document.querySelectorAll('#veille-filters .fb').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); renderVeille(cat);}
 
 // ── RECO ──
-async function loadReco(){
-  const c=document.getElementById('reco-container');
-  c.innerHTML=`<div class="loader" style="grid-column:1/-1"><div class="spin-ring"></div><div class="loader-txt">Curation en cours…</div></div>`;
-  try{
-    const data=await callClaude(`Génère 6 recommandations du jour pour dev/data engineer, mai 2026. Mix: outils, articles, repos GitHub, vidéos, podcasts.
-JSON exact:
-{"recs":[{"type":"Outil","icon":"⚡","title":"Nom réel","desc":"2 phrases: ce que c'est + usage.","why":"1 phrase: pourquoi pertinent aujourd'hui.","meta":"v2.0 · Open Source"}]}
-6 items. Types: Outil, Lecture, Vidéo, Podcast, Repository, Librairie. Noms réels uniquement.`);
-
-    document.getElementById('reco-meta').textContent=
-      `${data.recs.length} picks · ${NOW.toLocaleDateString('fr-FR',{day:'numeric',month:'long'})}`;
-    c.innerHTML='';
-    data.recs.forEach(item=>{
-      const bc=rtClass(item.type);
-      const card=document.createElement('div');
-      card.className='reco-card';
-      card.innerHTML=`
-        <div class="reco-top">
-          <div class="reco-icon">${item.icon||'◈'}</div>
-          <span class="rtype ${bc}">${item.type}</span>
-        </div>
-        <div class="r-title">${item.title}</div>
-        <div class="r-desc">${item.desc}</div>
-        <div class="r-why">💡 ${item.why}</div>
-        <div class="r-foot">
-          <span>${item.meta||''}</span>
-          <span class="r-link">Découvrir →</span>
-        </div>`;
-      c.appendChild(card);
-    });
-    stagger(c);
-  }catch(e){
-    c.innerHTML=`<div class="err-box" style="grid-column:1/-1">⚠ ${e.message}</div>`;
-  }
+function loadReco(){
+  const c=document.getElementById('reco-container'); const data={recs:RECO_DATA};
+  document.getElementById('reco-meta').textContent=`${data.recs.length} picks · ${NOW.toLocaleDateString('fr-FR',{day:'numeric',month:'long'})}`;
+  c.innerHTML='';
+  data.recs.forEach(item=>{const bc=rtClass(item.type); const card=document.createElement('div'); card.className='reco-card'; card.innerHTML=`<div class="reco-top"><div class="reco-icon">${item.icon||'◈'}</div><span class="rtype ${bc}">${item.type}</span></div><div class="r-title">${item.title}</div><div class="r-desc">${item.desc}</div><div class="r-why">💡 ${item.why}</div><div class="r-foot"><span>${item.meta||''}</span><span class="r-link">Découvrir →</span></div>`; c.appendChild(card);});
+  stagger(c);
 }
 
 // ── REFRESH ──
-function refreshAll(){
-  const btn=document.getElementById('refresh-btn');
-  btn.classList.add('spin');
-  veilleAll=[];
-  loadActu();loadVeille();loadReco();
-  setTimeout(()=>btn.classList.remove('spin'),2500);
-}
+function refreshAll(){const btn=document.getElementById('refresh-btn'); btn.classList.add('spin'); veilleAll=[]; loadActu();loadVeille();loadReco(); setTimeout(()=>btn.classList.remove('spin'),800);}
 
 // ── INIT ──
 loadActu();loadVeille();loadReco();
