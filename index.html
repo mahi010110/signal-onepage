@@ -152,9 +152,15 @@ section+section{padding-top:0;}
   box-shadow:0 24px 60px rgba(0,0,0,.1),0 4px 16px rgba(0,0,0,.05);
   background:var(--surface-h);
 }
-.card-main{border-radius:24px;padding:2.5rem;background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(255,255,255,.75));}
+.card-main{border-radius:24px;padding:2.1rem;background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(255,255,255,.75));}
 .card-main .c-title{font-size:1.7rem;}
-.card-main .c-summary{font-size:14px;}
+.card-main .c-summary{font-size:14px;flex:0;}
+.main-extra{
+  margin-top:.35rem;padding:1rem 1.1rem;border-radius:16px;
+  background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.12);
+  font-size:12px;line-height:1.7;color:var(--muted2);
+}
+.main-extra strong{display:block;color:var(--ink);font-size:11px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.25rem;font-family:'Fira Code',monospace;}
 
 /* Category pill */
 .cpill{
@@ -710,7 +716,7 @@ const ACTU_DATA = {
     "Kubernetes v1.36 confirme les évolutions à suivre côté cloud native"
   ],
   news: [
-    {cat:"Sécurité",title:"Linux : dirty frag devient le sujet prioritaire",summary:"Le CERT-FR signale des correctifs pour CVE-2026-43284 et CVE-2026-43500, surnommées dirty frag. Le sujet est important car l'enchaînement peut mener à une élévation de privilèges locale et une preuve de concept est publique.",impact:"Élevé",time:"CERT-FR · critique",url:"https://www.cert.ssi.gouv.fr/actualite/CERTFR-2026-ACT-021/"},
+    {cat:"Sécurité",title:"Linux : dirty frag devient le sujet prioritaire",summary:"Le CERT-FR signale des correctifs pour CVE-2026-43284 et CVE-2026-43500, surnommées dirty frag. Le sujet est important car l'enchaînement peut mener à une élévation de privilèges locale et une preuve de concept est publique.",focus:"À suivre : correctifs noyau, paquets des distributions Linux, exposition des machines et lecture des bulletins officiels avant toute mise à jour.",impact:"Élevé",time:"CERT-FR · critique",url:"https://www.cert.ssi.gouv.fr/actualite/CERTFR-2026-ACT-021/"},
     {cat:"Sécurité",title:"cPanel : exploitation par ransomware Sorry",summary:"BleepingComputer rapporte l'exploitation massive d'une faille cPanel, CVE-2026-41940, utilisée pour compromettre des sites et chiffrer des données. C'est un bon rappel de l'importance des mises à jour rapides sur les panneaux d'hébergement.",impact:"Élevé",time:"BleepingComputer · 2 mai",url:"https://www.bleepingcomputer.com/news/security/critrical-cpanel-flaw-mass-exploited-in-sorry-ransomware-attacks/"},
     {cat:"IA",title:"IA et exploits zero-day : alerte Google",summary:"Next.ink relaie l'analyse de Google selon laquelle l'IA aurait aidé des attaquants à développer un exploit zero-day. Le point important est l'évolution des usages offensifs de l'IA dans la recherche de vulnérabilités.",impact:"Élevé",time:"Next.ink · mai",url:"https://next.ink/237695/lia-aurait-aide-des-pirates-a-developper-un-exploit-zero-day-une-premiere-selon-google/"},
     {cat:"Cloud",title:"Cloudflare revient sur un incident DNSSEC .de",summary:"Cloudflare explique qu'une publication de signatures DNSSEC cassées par DENIC a rendu de nombreux domaines .de injoignables. C'est un cas concret utile pour comprendre l'impact opérationnel de DNSSEC.",impact:"Moyen",time:"Cloudflare Blog",url:"https://blog.cloudflare.com/de-tld-outage-dnssec/"},
@@ -750,7 +756,7 @@ function applyCardLink(card,item){if(item.url){card.onclick=()=>window.open(item
 function makeCard(item,isMain=false){
   const c=document.createElement('div'); c.className=`card ${isMain?'card-main':''}`;
   const cls=cc(item.cat), icls=ic(item.impact);
-  c.innerHTML=`<div class="cpill ${cls}"><span class="cpill-dot"></span>${item.cat}</div><div class="c-title">${item.title}</div><div class="c-summary">${item.summary}</div><div class="c-footer"><span class="c-time">${item.time||''}</span>${icls?`<span class="ibadge ${icls}">${item.impact}</span>`:''}<span class="c-arrow">Source →</span></div>`;
+  c.innerHTML=`<div class="cpill ${cls}"><span class="cpill-dot"></span>${item.cat}</div><div class="c-title">${item.title}</div><div class="c-summary">${item.summary}</div>${isMain&&item.focus?`<div class="main-extra"><strong>À retenir</strong>${item.focus}</div>`:''}<div class="c-footer"><span class="c-time">${item.time||''}</span>${icls?`<span class="ibadge ${icls}">${item.impact}</span>`:''}<span class="c-arrow">Source →</span></div>`;
   applyCardLink(c,item);
   return c;
 }
