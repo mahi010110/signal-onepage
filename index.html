@@ -195,8 +195,8 @@ section+section{padding-top:0;}
 .card:hover .c-arrow{color:var(--blue);transform:translateX(4px);}
 
 /* ── ACTU GRID LAYOUT ── */
-.actu-featured{display:grid;grid-template-columns:1.65fr 1fr;gap:12px;margin-bottom:12px;}
-.actu-side{display:grid;grid-template-rows:1fr 1fr;gap:12px;}
+.actu-featured{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px;}
+.actu-side{display:contents;}
 .actu-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
 
 /* ── VEILLE ── */
@@ -769,7 +769,7 @@ function loadActu(){
   document.getElementById('ticker-inner').innerHTML=ticks.map(t=>`<div class="ticker-item"><span class="t-sep">◆</span>${t}</div>`).join('');
   document.getElementById('actu-meta').textContent=`${data.news.length} sujets · ${NOW.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})}`;
   c.innerHTML='';
-  const featured=document.createElement('div'); featured.className='actu-featured'; featured.appendChild(makeCard(data.news[0],true));
+  const featured=document.createElement('div'); featured.className='actu-featured'; featured.appendChild(makeCard(data.news[0]));
   const side=document.createElement('div'); side.className='actu-side'; [data.news[1],data.news[2]].forEach(n=>side.appendChild(makeCard(n))); featured.appendChild(side); c.appendChild(featured);
   if(data.news.length>3){const row=document.createElement('div'); row.className='actu-row'; row.style.marginTop='12px'; data.news.slice(3).forEach(n=>row.appendChild(makeCard(n))); c.appendChild(row);}
   stagger(c);
