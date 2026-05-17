@@ -700,56 +700,58 @@ window.addEventListener('scroll',()=>{
 });
 function scrollTo(hash){document.querySelector(hash)?.scrollIntoView({behavior:'smooth'});}
 
-// ── DONNÉES PRÉPARÉES ──
+// ── DONNÉES SOURCÉES ──
 const ACTU_DATA = {
   ticker: [
-    "Linux améliore régulièrement la gestion matérielle récente",
-    "Les assistants locaux gagnent en intérêt côté confidentialité",
-    "La sécurité supply chain reste un sujet prioritaire",
-    "Le cloud hybride continue de progresser dans les entreprises",
-    "Les outils open source de supervision restent essentiels"
+    "CERT-FR signale des correctifs Linux liés à dirty frag",
+    "CISA publie régulièrement les vulnérabilités exploitées connues",
+    "Kubernetes v1.36 apporte de nouvelles évolutions côté plateforme",
+    "Ingress NGINX entre en phase de retrait côté Kubernetes",
+    "La veille sécurité doit rester reliée aux sources officielles"
   ],
   news: [
-    {cat:"Open Source",title:"Linux reste au centre de l'infrastructure moderne",summary:"Le noyau Linux continue d'évoluer avec des améliorations matérielles, réseau et sécurité. Pour un profil système/réseau, suivre ces évolutions aide à comprendre les bases des serveurs modernes.",impact:"Élevé",time:"Sélection du jour"},
-    {cat:"IA",title:"Les modèles locaux attirent de plus en plus",summary:"Les entreprises et les particuliers s'intéressent davantage aux modèles exécutés en local. L'objectif est de mieux contrôler les données, les coûts et la confidentialité.",impact:"Moyen",time:"Tendance"},
-    {cat:"Cloud",title:"Le cloud hybride devient plus courant",summary:"Beaucoup d'organisations combinent serveurs internes, cloud public et services managés. Cette approche demande de bonnes bases réseau, sécurité et automatisation.",impact:"Élevé",time:"À suivre"},
-    {cat:"Dev",title:"L'automatisation reste une compétence clé",summary:"Scripts, tâches planifiées et pipelines simples permettent de gagner du temps et de réduire les erreurs. Même de petits outils Bash ou Python peuvent apporter une vraie valeur.",impact:"Moyen",time:"Pratique"},
-    {cat:"Data",title:"Les données doivent être mieux gouvernées",summary:"La qualité, la traçabilité et la protection des données deviennent des sujets centraux. Les équipes techniques doivent savoir où sont stockées les données et comment elles circulent.",impact:"Moyen",time:"Contexte"},
-    {cat:"Open Source",title:"Les outils libres structurent la veille technique",summary:"Documentation, dépôts GitHub, blogs techniques et changelogs restent des sources importantes. Ils permettent de suivre les évolutions sans dépendre uniquement des réseaux sociaux.",impact:"Faible",time:"Ressource"},
-    {cat:"Cloud",title:"La maîtrise des coûts cloud devient critique",summary:"Les dépenses cloud peuvent augmenter rapidement sans suivi. Comprendre les ressources, les logs et les alertes aide à éviter les mauvaises surprises.",impact:"Moyen",time:"Gestion"}
+    {cat:"Sécurité",title:"CERT-FR : vulnérabilités Linux dirty frag",summary:"Le CERT-FR indique que des correctifs de sécurité du noyau Linux ont été publiés pour CVE-2026-43284 et CVE-2026-43500, surnommées dirty frag. Le bulletin précise qu'elles peuvent être combinées pour obtenir des droits d'administration localement.",impact:"Élevé",time:"CERT-FR · 11 mai",url:"https://www.cert.ssi.gouv.fr/actualite/CERTFR-2026-ACT-021/"},
+    {cat:"Sécurité",title:"CISA suit les vulnérabilités exploitées",summary:"La page Cybersecurity Alerts & Advisories de la CISA liste plusieurs alertes de mai 2026 liées au catalogue Known Exploited Vulnerabilities. C'est une source utile pour prioriser les correctifs réellement exploités.",impact:"Élevé",time:"CISA · mai 2026",url:"https://www.cisa.gov/news-events/cybersecurity-advisories"},
+    {cat:"Cloud",title:"Kubernetes v1.36 est publié",summary:"Le blog Kubernetes présente la version v1.36, nommée Haru. Cette sortie apporte des évolutions stables, bêta et alpha à suivre pour les environnements conteneurisés.",impact:"Moyen",time:"Kubernetes · 22 avril",url:"https://kubernetes.io/blog/2026/04/22/kubernetes-v1-36-release/"},
+    {cat:"DevOps",title:"Ingress NGINX entre en phase de retrait",summary:"Le projet Kubernetes explique le retrait progressif d'Ingress NGINX et recommande d'anticiper les migrations. C'est important pour les clusters qui utilisent encore ce contrôleur d'entrée.",impact:"Moyen",time:"Kubernetes Blog",url:"https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/"},
+    {cat:"Open Source",title:"Kernel.org publie les journaux de versions Linux",summary:"Les changelogs kernel.org restent une source primaire pour suivre les changements du noyau Linux. Ils sont utiles pour repérer les correctifs réseau, sécurité et matériel intégrés aux versions stables.",impact:"Faible",time:"kernel.org",url:"https://cdn.kernel.org/pub/linux/kernel/"},
+    {cat:"Sécurité",title:"CERT-FR : bulletins hebdomadaires à suivre",summary:"Les bulletins d'actualité CERT-FR regroupent les vulnérabilités critiques et les avis éditeurs. Ils donnent une vision synthétique des risques importants de la semaine.",impact:"Moyen",time:"CERT-FR",url:"https://www.cert.ssi.gouv.fr/actualite/"},
+    {cat:"Open Source",title:"GitHub Security Advisories comme source complémentaire",summary:"La base GitHub Security Advisories aide à suivre les failles touchant les bibliothèques et projets open source. Elle complète les bulletins officiels pour les projets hébergés sur GitHub.",impact:"Moyen",time:"GitHub",url:"https://github.com/advisories"}
   ]
 };
 
 const VEILLE_DATA = [
-  {cat:"Sécurité",title:"Surveiller les CVE critiques chaque semaine",summary:"Les failles critiques touchant les systèmes exposés doivent être identifiées rapidement. Une veille simple consiste à suivre CERT-FR, CISA KEV et les bulletins éditeurs.",impact:"Élevé",source:"CERT-FR / CISA",time:"Priorité"},
-  {cat:"Système",title:"Les mises à jour Linux restent une base de sécurité",summary:"Un serveur non maintenu devient vite fragile. La gestion des paquets, des dépôts et des redémarrages planifiés fait partie des bonnes pratiques système.",impact:"Élevé",source:"Linux",time:"Routine"},
-  {cat:"Réseau",title:"DNS et certificats méritent une surveillance régulière",summary:"Beaucoup d'incidents viennent d'un certificat expiré ou d'une mauvaise configuration DNS. Documenter les domaines, TTL et dates d'expiration évite des coupures inutiles.",impact:"Moyen",source:"Ops",time:"Prévention"},
-  {cat:"DevOps",title:"Les sauvegardes doivent être testées, pas seulement créées",summary:"Une sauvegarde n'a de valeur que si la restauration fonctionne. Il faut prévoir des tests réguliers et noter clairement la procédure de retour arrière.",impact:"Élevé",source:"Bonnes pratiques",time:"À vérifier"},
-  {cat:"Open Source",title:"Les changelogs indiquent souvent les risques à venir",summary:"Lire les notes de version permet de repérer les changements cassants et les corrections importantes. C'est utile avant de mettre à jour un service en production.",impact:"Faible",source:"GitHub",time:"Lecture"},
-  {cat:"Sécurité",title:"MFA et mots de passe restent incontournables",summary:"L'authentification multifacteur réduit fortement les risques de compromission. Elle doit être activée en priorité sur les comptes mail, cloud, GitHub et administration.",impact:"Élevé",source:"Hygiène sécurité",time:"Indispensable"},
-  {cat:"Réseau",title:"La segmentation limite l'impact d'un incident",summary:"Séparer les services, postes utilisateurs et environnements sensibles limite les déplacements latéraux. Même une segmentation simple améliore déjà la sécurité globale.",impact:"Moyen",source:"Architecture",time:"Conception"},
-  {cat:"Système",title:"Les journaux système aident à comprendre les incidents",summary:"Les logs systemd, SSH, pare-feu et applications donnent souvent les premiers indices. Savoir les consulter rapidement est une compétence très utile en support infrastructure.",impact:"Moyen",source:"Linux",time:"Diagnostic"},
-  {cat:"DevOps",title:"Infrastructure as Code : utile même à petite échelle",summary:"Décrire une configuration dans des fichiers rend les changements plus lisibles et reproductibles. Même un petit lab peut bénéficier d'une structure claire et versionnée.",impact:"Faible",source:"IaC",time:"Méthode"}
+  {cat:"Sécurité",title:"Dirty frag : correctifs noyau Linux à surveiller",summary:"Le CERT-FR mentionne CVE-2026-43284 et CVE-2026-43500, avec une preuve de concept publique. Sur des systèmes Linux multi-utilisateurs, les correctifs noyau doivent être priorisés.",impact:"Élevé",source:"CERT-FR",time:"Linux",url:"https://www.cert.ssi.gouv.fr/actualite/CERTFR-2026-ACT-021/"},
+  {cat:"Sécurité",title:"Palo Alto PAN-OS : vulnérabilité exploitée",summary:"Dans son bulletin, le CERT-FR référence CVE-2026-0300 sur PAN-OS avec exploitation signalée. Les équipements exposés doivent être vérifiés rapidement côté version et correctifs.",impact:"Élevé",source:"CERT-FR",time:"Réseau",url:"https://www.cert.ssi.gouv.fr/actualite/CERTFR-2026-ACT-021/"},
+  {cat:"Sécurité",title:"Ivanti EPMM : exploitation signalée",summary:"Le bulletin CERT-FR indique CVE-2026-6973 sur Ivanti Endpoint Manager Mobile avec exploitation. C'est typiquement le genre d'alerte à suivre pour les outils d'administration exposés.",impact:"Élevé",source:"CERT-FR",time:"Priorité",url:"https://www.cert.ssi.gouv.fr/actualite/CERTFR-2026-ACT-021/"},
+  {cat:"DevOps",title:"MOVEit Automation : alerte critique",summary:"Le CERT-FR référence CVE-2026-4670 concernant Progress MOVEit Automation. Les solutions de transfert automatisé sont sensibles car elles manipulent souvent des données importantes.",impact:"Élevé",source:"CERT-FR",time:"À vérifier",url:"https://www.cert.ssi.gouv.fr/actualite/CERTFR-2026-ACT-021/"},
+  {cat:"Système",title:"Ubuntu : avis de sécurité à consulter",summary:"Le bulletin CERT-FR précédent référence un avis Ubuntu lié à CVE-2025-68263. Pour un administrateur Linux, suivre les avis distribution reste indispensable avant les mises à jour.",impact:"Moyen",source:"CERT-FR",time:"Linux",url:"https://www.cert.ssi.gouv.fr/actualite/CERTFR-2026-ACT-020/"},
+  {cat:"Réseau",title:"CISA : prioriser les failles exploitées",summary:"Les alertes CISA sur les vulnérabilités connues exploitées aident à distinguer les correctifs urgents des simples mises à jour de routine. C'est utile pour organiser une veille sécurité réaliste.",impact:"Moyen",source:"CISA",time:"Veille",url:"https://www.cisa.gov/news-events/cybersecurity-advisories"},
+  {cat:"Open Source",title:"Kubernetes v1.36 : suivre les changements",summary:"La sortie Kubernetes v1.36 apporte des évolutions dans plusieurs niveaux de maturité. Avant une mise à jour, il faut lire les changements, dépréciations et impacts possibles.",impact:"Moyen",source:"Kubernetes",time:"Plateforme",url:"https://kubernetes.io/blog/2026/04/22/kubernetes-v1-36-release/"},
+  {cat:"DevOps",title:"Ingress NGINX : anticiper la migration",summary:"Le retrait annoncé d'Ingress NGINX rappelle qu'un composant très utilisé peut devenir un risque s'il n'est plus maintenu. Les équipes doivent identifier les clusters concernés et prévoir une alternative.",impact:"Moyen",source:"Kubernetes",time:"Migration",url:"https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/"},
+  {cat:"Open Source",title:"GitHub Advisories : compléter la veille dépendances",summary:"Pour les projets qui utilisent des bibliothèques open source, GitHub Advisories permet de suivre les vulnérabilités par écosystème. C'est une bonne source complémentaire aux bulletins CERT.",impact:"Faible",source:"GitHub",time:"Dépendances",url:"https://github.com/advisories"}
 ];
 
 const RECO_DATA = [
-  {type:"Outil",icon:"🐧",title:"journalctl",desc:"Commande essentielle pour lire les logs systemd sur Linux. Elle aide à diagnostiquer les services qui échouent, les erreurs de démarrage et les événements système.",why:"Très utile pour progresser en administration Linux.",meta:"Linux · Diagnostic"},
-  {type:"Outil",icon:"🌐",title:"dig",desc:"Outil simple pour interroger le DNS et comprendre la résolution de noms. Il permet de vérifier les enregistrements A, MX, TXT, NS ou CNAME.",why:"Base importante pour le réseau et l'hébergement web.",meta:"DNS · Réseau"},
-  {type:"Lecture",icon:"📘",title:"Guides de l'ANSSI",desc:"L'ANSSI publie des recommandations accessibles sur l'hygiène informatique, l'administration sécurisée et la protection des systèmes. C'est une source sérieuse pour structurer sa veille.",why:"Bon repère francophone pour la cybersécurité.",meta:"Sécurité · France"},
-  {type:"Repository",icon:"⚙️",title:"awesome-selfhosted",desc:"Liste de logiciels libres que l'on peut héberger soi-même. Elle permet de découvrir des services utiles pour apprendre Docker, Linux, reverse proxy et sauvegardes.",why:"Parfait pour trouver des idées de labs personnels.",meta:"GitHub · Open Source"},
-  {type:"Outil",icon:"🔒",title:"OpenSSH",desc:"Brique centrale pour administrer des machines à distance. Comprendre les clés, le fichier ssh_config et les permissions est indispensable.",why:"Compétence de base pour système, réseau et cloud.",meta:"SSH · Administration"},
-  {type:"Vidéo",icon:"🎥",title:"Démonstrations de labs réseau",desc:"Les vidéos pratiques sur VLAN, routage, DNS ou pare-feu aident à visualiser les concepts. L'idéal est de reproduire ensuite les manipulations dans un petit lab local.",why:"Apprendre en testant rend les notions plus solides.",meta:"Réseau · Pratique"}
+  {type:"Lecture",icon:"🛡️",title:"Bulletins CERT-FR",desc:"Source française officielle pour suivre les alertes, avis et bulletins d'actualité sécurité. Utile pour construire une veille professionnelle fiable.",why:"À consulter régulièrement pour les vulnérabilités critiques.",meta:"CERT-FR · Source officielle",url:"https://www.cert.ssi.gouv.fr/"},
+  {type:"Lecture",icon:"🚨",title:"CISA Cybersecurity Advisories",desc:"Portail américain qui publie des alertes et advisories, notamment sur les vulnérabilités exploitées. Pratique pour prioriser les risques réels.",why:"Très utile pour comprendre ce qui est activement exploité.",meta:"CISA · Sécurité",url:"https://www.cisa.gov/news-events/cybersecurity-advisories"},
+  {type:"Lecture",icon:"🐧",title:"Kernel.org changelogs",desc:"Source primaire pour suivre les versions et changements du noyau Linux. Les changelogs donnent le détail des corrections intégrées.",why:"Bon réflexe pour progresser en administration Linux.",meta:"Linux · Noyau",url:"https://cdn.kernel.org/pub/linux/kernel/"},
+  {type:"Lecture",icon:"☸️",title:"Kubernetes Blog",desc:"Blog officiel pour suivre les releases, dépréciations et changements importants de Kubernetes. Utile pour cloud, DevOps et conteneurs.",why:"Permet d'anticiper les migrations et les changements de plateforme.",meta:"Kubernetes · DevOps",url:"https://kubernetes.io/blog/"},
+  {type:"Repository",icon:"⚙️",title:"GitHub Security Advisories",desc:"Base de vulnérabilités liées aux projets et dépendances open source hébergés sur GitHub. Elle complète bien une veille CVE classique.",why:"Utile pour relier sécurité et dépendances logicielles.",meta:"GitHub · Open Source",url:"https://github.com/advisories"},
+  {type:"Lecture",icon:"📘",title:"Guides de l'ANSSI",desc:"L'ANSSI publie des recommandations pratiques sur l'hygiène informatique, l'administration sécurisée et la protection des systèmes. Les guides sont sérieux et adaptés au contexte français.",why:"Très bon socle pour cybersécurité et administration système.",meta:"ANSSI · Recommandations",url:"https://cyber.gouv.fr/publications"}
 ];
 
 // ── HELPERS ──
 function cc(cat){return {IA:'ia',Data:'da',Dev:'de',Cloud:'cl','Sécurité':'se','Open Source':'os',Réseau:'re',Système:'re',DevOps:'de'}[cat]||'da';}
 function ic(lvl){return {Élevé:'i-h',Fort:'i-h',Moyen:'i-m',Faible:'i-l'}[lvl]||'';}
 function rtClass(t){return {Outil:'rt-outil',Lecture:'rt-lecture',Article:'rt-lecture',Vidéo:'rt-video',Podcast:'rt-podcast',Repository:'rt-repo',GitHub:'rt-repo',Librairie:'rt-repo'}[t]||'rt-outil';}
+function applyCardLink(card,item){if(item.url){card.onclick=()=>window.open(item.url,'_blank','noopener,noreferrer');card.setAttribute('role','link');card.setAttribute('tabindex','0');card.title='Ouvrir la source : '+item.url;card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();window.open(item.url,'_blank','noopener,noreferrer');}});}}
 
 function makeCard(item,isMain=false){
   const c=document.createElement('div'); c.className=`card ${isMain?'card-main':''}`;
   const cls=cc(item.cat), icls=ic(item.impact);
-  c.innerHTML=`<div class="cpill ${cls}"><span class="cpill-dot"></span>${item.cat}</div><div class="c-title">${item.title}</div><div class="c-summary">${item.summary}</div><div class="c-footer"><span class="c-time">${item.time||''}</span>${icls?`<span class="ibadge ${icls}">${item.impact}</span>`:''}<span class="c-arrow">→</span></div>`;
+  c.innerHTML=`<div class="cpill ${cls}"><span class="cpill-dot"></span>${item.cat}</div><div class="c-title">${item.title}</div><div class="c-summary">${item.summary}</div><div class="c-footer"><span class="c-time">${item.time||''}</span>${icls?`<span class="ibadge ${icls}">${item.impact}</span>`:''}<span class="c-arrow">Source →</span></div>`;
+  applyCardLink(c,item);
   return c;
 }
 
@@ -773,7 +775,7 @@ function renderVeille(filter){
   const c=document.getElementById('veille-container'); const items=filter==='all'?veilleAll:veilleAll.filter(n=>n.cat===filter);
   if(!items.length){c.innerHTML=`<div class="loader" style="grid-column:1/-1;color:var(--muted)">Aucun résultat.</div>`;return;}
   c.innerHTML='';
-  items.forEach(item=>{const cls=cc(item.cat),icls=ic(item.impact); const card=document.createElement('div'); card.className='card'; card.innerHTML=`<div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><div class="cpill ${cls}"><span class="cpill-dot"></span>${item.cat}</div>${item.source?`<span style="font-family:'Fira Code',monospace;font-size:9px;color:var(--muted)">${item.source}</span>`:''}</div><div class="c-title">${item.title}</div><div class="c-summary">${item.summary}</div><div class="c-footer"><span class="c-time">${item.time||''}</span>${icls?`<span class="ibadge ${icls}">${item.impact}</span>`:''}<span class="c-arrow">→</span></div>`; c.appendChild(card);});
+  items.forEach(item=>{const cls=cc(item.cat),icls=ic(item.impact); const card=document.createElement('div'); card.className='card'; card.innerHTML=`<div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><div class="cpill ${cls}"><span class="cpill-dot"></span>${item.cat}</div>${item.source?`<span style="font-family:'Fira Code',monospace;font-size:9px;color:var(--muted)">${item.source}</span>`:''}</div><div class="c-title">${item.title}</div><div class="c-summary">${item.summary}</div><div class="c-footer"><span class="c-time">${item.time||''}</span>${icls?`<span class="ibadge ${icls}">${item.impact}</span>`:''}<span class="c-arrow">Source →</span></div>`; applyCardLink(card,item); c.appendChild(card);});
   stagger(c);
 }
 function filterV(cat,btn){document.querySelectorAll('#veille-filters .fb').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); renderVeille(cat);}
@@ -783,7 +785,7 @@ function loadReco(){
   const c=document.getElementById('reco-container'); const data={recs:RECO_DATA};
   document.getElementById('reco-meta').textContent=`${data.recs.length} picks · ${NOW.toLocaleDateString('fr-FR',{day:'numeric',month:'long'})}`;
   c.innerHTML='';
-  data.recs.forEach(item=>{const bc=rtClass(item.type); const card=document.createElement('div'); card.className='reco-card'; card.innerHTML=`<div class="reco-top"><div class="reco-icon">${item.icon||'◈'}</div><span class="rtype ${bc}">${item.type}</span></div><div class="r-title">${item.title}</div><div class="r-desc">${item.desc}</div><div class="r-why">💡 ${item.why}</div><div class="r-foot"><span>${item.meta||''}</span><span class="r-link">Découvrir →</span></div>`; c.appendChild(card);});
+  data.recs.forEach(item=>{const bc=rtClass(item.type); const card=document.createElement('div'); card.className='reco-card'; card.innerHTML=`<div class="reco-top"><div class="reco-icon">${item.icon||'◈'}</div><span class="rtype ${bc}">${item.type}</span></div><div class="r-title">${item.title}</div><div class="r-desc">${item.desc}</div><div class="r-why">💡 ${item.why}</div><div class="r-foot"><span>${item.meta||''}</span><span class="r-link">Source →</span></div>`; applyCardLink(card,item); c.appendChild(card);});
   stagger(c);
 }
 
