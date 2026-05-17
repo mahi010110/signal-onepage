@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Veille Tech</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Fira+Code:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f0eee9;
+  --surface: rgba(255,255,255,0.68);
+  --surface-h: rgba(255,255,255,0.9);
+  --border: rgba(0,0,0,0.07);
+  --border2: rgba(0,0,0,0.12);
+  --text: #1a1814;
+  --muted: #9a9088;
+  --muted2: #5c574f;
+  --ink: #1e1b18;
+  --blue: #2563eb;
+  --violet: #7c3aed;
+  --rose: #e11d48;
+  --emerald: #059669;
+  --amber: #d97706;
+  --sky: #0284c7;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:14px;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* ── BLOBS ── */
+.blobs{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:0;}
+.blob-1{width:800px;height:800px;background:radial-gradient(circle,#dbeafe 0%,#ede9fe 60%,transparent 100%);top:-200px;right:-150px;animation:blobin 1.2s 0.2s ease forwards,driftA 20s 1.4s ease-in-out infinite alternate;}
+.blob-2{width:600px;height:600px;background:radial-gradient(circle,#fce7f3 0%,#fef3c7 60%,transparent 100%);bottom:-100px;left:-100px;animation:blobin 1.2s 0.5s ease forwards,driftB 25s 1.7s ease-in-out infinite alternate;}
+.blob-3{width:500px;height:500px;background:radial-gradient(circle,#d1fae5 0%,#cffafe 60%,transparent 100%);top:45%;left:35%;animation:blobin 1.2s 0.8s ease forwards,driftC 18s 2s ease-in-out infinite alternate;}
+@keyframes blobin{to{opacity:.38}}
+@keyframes driftA{from{transform:translate(0,0) scale(1)}to{transform:translate(-50px,40px) scale(1.06)}}
+@keyframes driftB{from{transform:translate(0,0) scale(1)}to{transform:translate(40px,-30px) scale(.94)}}
+@keyframes driftC{from{transform:translate(0,0) scale(1)}to{transform:translate(-30px,50px) scale(1.1)}}
+
+/* ── HEADER ── */
+header{
+  position:sticky;top:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 2.5rem;
+  background:rgba(240,238,233,0.72);
+  backdrop-filter:blur(28px);
+  -webkit-backdrop-filter:blur(28px);
+  border-bottom:1px solid var(--border);
+  animation:slideDown .6s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes slideDown{from{opacity:0;transform:translateY(-100%)}to{opacity:1;transform:translateY(0)}}
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.55rem;font-weight:500;letter-spacing:-.03em;color:var(--ink);
+}
+.logo em{font-style:italic;color:var(--blue);}
+.header-pill{
+  display:flex;align-items:center;gap:7px;
+  font-family:'Fira Code',monospace;font-size:11px;color:var(--muted2);
+  background:rgba(255,255,255,.7);border:1px solid var(--border2);
+  padding:5px 15px;border-radius:100px;
+}
+.live-dot{
+  width:6px;height:6px;border-radius:50%;background:var(--emerald);
+  box-shadow:0 0 0 3px rgba(5,150,105,.15);
+  animation:livepulse 2s ease infinite;
+}
+@keyframes livepulse{0%,100%{box-shadow:0 0 0 3px rgba(5,150,105,.15)}50%{box-shadow:0 0 0 7px rgba(5,150,105,.04)}}
+.header-r{display:flex;align-items:center;gap:.9rem;}
+.date-lbl{font-family:'Fira Code',monospace;font-size:11px;color:var(--muted);}
+.refresh-all{
+  display:flex;align-items:center;gap:7px;
+  background:var(--ink);color:#f0eee9;border:none;
+  padding:8px 18px;border-radius:100px;
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:500;
+  cursor:pointer;transition:opacity .2s,transform .2s;
+}
+.refresh-all:hover{opacity:.8;transform:scale(.98);}
+.refresh-all.spin svg{animation:rotateSpin .7s linear infinite;}
+@keyframes rotateSpin{to{transform:rotate(360deg)}}
+
+/* ── SECTIONS ── */
+.page{position:relative;z-index:1;}
+section{padding:5rem 2.5rem;max-width:1440px;margin:0 auto;}
+section+section{padding-top:0;}
+
+.eyebrow{
+  font-family:'Fira Code',monospace;font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;
+}
+.sec-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.2rem,5vw,3.8rem);font-weight:400;line-height:1.05;
+  letter-spacing:-.03em;color:var(--ink);margin-bottom:2.25rem;
+}
+.sec-title em{font-style:italic;color:var(--blue);}
+.sec-top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2.25rem;}
+.sec-meta{font-family:'Fira Code',monospace;font-size:11px;color:var(--muted);text-align:right;line-height:1.8;}
+
+/* ── TICKER ── */
+.ticker-wrap{
+  display:flex;align-items:center;
+  background:rgba(255,255,255,.65);backdrop-filter:blur(12px);
+  border:1px solid var(--border2);border-radius:100px;
+  overflow:hidden;height:37px;margin-bottom:2rem;
+}
+.ticker-label{
+  padding:0 16px;font-family:'Fira Code',monospace;font-size:9px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--blue);
+  border-right:1px solid var(--border2);height:100%;
+  display:flex;align-items:center;white-space:nowrap;flex-shrink:0;
+}
+.ticker-scroll{overflow:hidden;flex:1;}
+.ticker-inner{
+  display:flex;white-space:nowrap;
+  animation:tickerMove 50s linear infinite;
+}
+.ticker-item{
+  padding:0 1.75rem;font-size:12px;color:var(--muted2);
+  display:flex;align-items:center;gap:8px;height:37px;
+  border-right:1px solid var(--border);
+}
+.t-sep{color:var(--blue);font-size:8px;}
+@keyframes tickerMove{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── CARDS ── */
+.card{
+  background:var(--surface);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid var(--border2);border-radius:20px;
+  padding:1.75rem;
+  display:flex;flex-direction:column;gap:.85rem;
+  cursor:pointer;
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease, background .2s;
+  position:relative;overflow:hidden;
+}
+.card::after{
+  content:'';position:absolute;inset:0;border-radius:20px;
+  background:linear-gradient(135deg,rgba(255,255,255,.4),rgba(255,255,255,0));
+  pointer-events:none;
+}
+.card:hover{
+  transform:translateY(-5px) scale(1.01);
+  box-shadow:0 24px 60px rgba(0,0,0,.1),0 4px 16px rgba(0,0,0,.05);
+  background:var(--surface-h);
+}
+.card-main{border-radius:24px;padding:2.5rem;background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(255,255,255,.75));}
+.card-main .c-title{font-size:1.7rem;}
+.card-main .c-summary{font-size:14px;}
+
+/* Category pill */
+.cpill{
+  display:inline-flex;align-items:center;gap:6px;align-self:flex-start;
+  font-family:'Fira Code',monospace;font-size:10px;letter-spacing:.07em;
+  text-transform:uppercase;padding:4px 11px;border-radius:100px;border:1px solid;
+}
+.cpill-dot{width:5px;height:5px;border-radius:50%;background:currentColor;}
+.ia{color:var(--violet);border-color:rgba(124,58,237,.25);background:rgba(124,58,237,.07);}
+.da{color:var(--sky);border-color:rgba(2,132,199,.25);background:rgba(2,132,199,.07);}
+.de{color:var(--emerald);border-color:rgba(5,150,105,.25);background:rgba(5,150,105,.07);}
+.cl{color:var(--amber);border-color:rgba(217,119,6,.22);background:rgba(217,119,6,.06);}
+.se{color:var(--rose);border-color:rgba(225,29,72,.22);background:rgba(225,29,72,.06);}
+.os{color:var(--emerald);border-color:rgba(5,150,105,.25);background:rgba(5,150,105,.07);}
+.re{color:var(--sky);border-color:rgba(2,132,199,.25);background:rgba(2,132,199,.07);}
+
+.c-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;font-weight:500;line-height:1.25;letter-spacing:-.02em;color:var(--ink);
+}
+.c-summary{font-size:13px;color:var(--muted2);line-height:1.72;flex:1;}
+.c-footer{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:.75rem;border-top:1px solid var(--border);
+}
+.c-time{font-family:'Fira Code',monospace;font-size:10px;color:var(--muted);}
+.ibadge{font-family:'Fira Code',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:7px;}
+.i-h{background:rgba(225,29,72,.08);color:var(--rose);}
+.i-m{background:rgba(217,119,6,.08);color:var(--amber);}
+.i-l{background:rgba(5,150,105,.08);color:var(--emerald);}
+.c-arrow{font-size:14px;color:var(--muted);transition:all .2s;}
+.card:hover .c-arrow{color:var(--blue);transform:translateX(4px);}
+
+/* ── ACTU GRID LAYOUT ── */
+.actu-featured{display:grid;grid-template-columns:1.65fr 1fr;gap:12px;margin-bottom:12px;}
+.actu-side{display:grid;grid-template-rows:1fr 1fr;gap:12px;}
+.actu-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+
+/* ── VEILLE ── */
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.75rem;}
+.fb{
+  font-size:12px;font-weight:500;padding:6px 17px;border-radius:100px;
+  border:1px solid var(--border2);background:rgba(255,255,255,.6);
+  backdrop-filter:blur(8px);color:var(--muted2);cursor:pointer;
+  font-family:'Plus Jakarta Sans',sans-serif;transition:all .18s;
+}
+.fb:hover{background:rgba(255,255,255,.9);color:var(--ink);}
+.fb.active{background:var(--ink);color:#f0eee9;border-color:var(--ink);}
+.veille-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px;}
+
+/* ── RECO ── */
+.reco-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px;}
+.reco-card{
+  background:var(--surface);backdrop-filter:blur(20px);
+  border:1px solid var(--border2);border-radius:22px;
+  padding:1.75rem;display:flex;flex-direction:column;gap:1rem;
+  cursor:pointer;
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s;
+}
+.reco-card:hover{transform:translateY(-5px) scale(1.01);box-shadow:0 24px 64px rgba(0,0,0,.1);}
+.reco-top{display:flex;align-items:center;justify-content:space-between;}
+.reco-icon{
+  font-size:2rem;width:54px;height:54px;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.85);border:1px solid var(--border2);border-radius:15px;
+}
+.rtype{font-family:'Fira Code',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:8px;border:1px solid;}
+.rt-outil{color:var(--sky);background:rgba(2,132,199,.06);border-color:rgba(2,132,199,.2);}
+.rt-lecture{color:var(--violet);background:rgba(124,58,237,.06);border-color:rgba(124,58,237,.2);}
+.rt-video{color:var(--rose);background:rgba(225,29,72,.06);border-color:rgba(225,29,72,.18);}
+.rt-podcast{color:var(--amber);background:rgba(217,119,6,.06);border-color:rgba(217,119,6,.18);}
+.rt-repo{color:var(--emerald);background:rgba(5,150,105,.06);border-color:rgba(5,150,105,.2);}
+.r-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:500;letter-spacing:-.02em;color:var(--ink);line-height:1.3;}
+.r-desc{font-size:13px;color:var(--muted2);line-height:1.68;}
+.r-why{
+  font-size:12px;color:var(--blue);
+  background:rgba(37,99,235,.05);border:1px solid rgba(37,99,235,.13);
+  border-radius:11px;padding:.65rem 1rem;line-height:1.5;
+}
+.r-foot{display:flex;align-items:center;justify-content:space-between;
+  font-family:'Fira Code',monospace;font-size:10px;color:var(--muted);
+  padding-top:.75rem;border-top:1px solid var(--border);}
+.r-link{color:var(--blue);font-size:12px;font-weight:500;font-family:'Plus Jakarta Sans',sans-serif;}
+
+/* ── SEPARATOR ── */
+.wave-sep{
+  display:block;width:100%;height:60px;overflow:hidden;
+  position:relative;z-index:1;
+}
+
+/* ── LOADING / ERROR ── */
+.loader{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:5rem 2rem;gap:1.5rem;color:var(--muted);
+  background:rgba(255,255,255,.45);border-radius:22px;border:1px dashed var(--border2);
+}
+.spin-ring{
+  width:40px;height:40px;border:2px solid var(--border2);
+  border-top-color:var(--blue);border-radius:50%;
+  animation:rotateSpin .9s linear infinite;
+}
+.loader-txt{font-family:'Fira Code',monospace;font-size:12px;letter-spacing:.08em;}
+.err-box{
+  padding:3rem;text-align:center;color:var(--rose);
+  font-family:'Fira Code',monospace;font-size:12px;
+  background:rgba(255,255,255,.45);border-radius:22px;
+  border:1px dashed rgba(225,29,72,.2);
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-delay-1{transition-delay:.08s;}
+.reveal-delay-2{transition-delay:.16s;}
+.reveal-delay-3{transition-delay:.24s;}
+.reveal-delay-4{transition-delay:.32s;}
+
+/* ── CARD STAGGER ── */
+.card-stagger{opacity:0;transform:translateY(24px) scale(.98);}
+.card-stagger.visible{opacity:1;transform:translateY(0) scale(1);transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1);}
+
+/* ── SECTION DIVIDER ── */
+.section-divider{
+  display:flex;align-items:center;gap:1.5rem;
+  padding:0 2.5rem;margin-bottom:0;
+  position:relative;z-index:1;
+}
+.sdiv-line{flex:1;height:1px;background:var(--border2);}
+.sdiv-label{
+  font-family:'Fira Code',monospace;font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--muted);white-space:nowrap;
+}
+
+/* ── HERO INTRO ── */
+.hero{
+  padding:7rem 2.5rem 4rem;
+  max-width:1440px;margin:0 auto;
+  position:relative;z-index:1;
+}
+.hero-eyebrow{
+  font-family:'Fira Code',monospace;font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted);
+  display:flex;align-items:center;gap:10px;margin-bottom:1.25rem;
+  opacity:0;animation:fadeUp .6s .3s ease forwards;
+}
+.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--muted);}
+.hero-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3rem,8vw,6.5rem);font-weight:400;line-height:1.0;
+  letter-spacing:-.04em;color:var(--ink);
+  opacity:0;animation:fadeUp .7s .45s ease forwards;
+}
+.hero-title em{font-style:italic;color:var(--blue);}
+.hero-sub{
+  font-size:15px;color:var(--muted2);max-width:480px;line-height:1.8;
+  margin-top:1.5rem;
+  opacity:0;animation:fadeUp .7s .6s ease forwards;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── NAV DOTS ── */
+.side-nav{
+  position:fixed;right:1.75rem;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:10px;z-index:300;
+}
+.nav-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--border2);border:1px solid var(--border2);
+  cursor:pointer;transition:all .25s;
+}
+.nav-dot.active{background:var(--blue);border-color:var(--blue);transform:scale(1.3);}
+.nav-dot:hover{background:var(--muted);}
+
+/* ── SIGNATURE BANNER ── */
+.signature-banner{
+  position:relative;z-index:1;
+  padding:1.5rem 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid var(--border2);
+  background:rgba(255,255,255,0.45);
+  backdrop-filter:blur(16px);
+  animation:slideDown .5s cubic-bezier(.16,1,.3,1) both;
+}
+.sig-left{display:flex;align-items:center;gap:16px;}
+.sig-avatar{
+  width:40px;height:40px;border-radius:50%;
+  background:linear-gradient(135deg,#dbeafe,#ede9fe);
+  border:2px solid rgba(37,99,235,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:1rem;font-weight:500;
+  color:var(--blue);letter-spacing:-.02em;
+  flex-shrink:0;
+}
+.sig-text{}
+.sig-by{font-family:'Fira Code',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:1px;}
+.sig-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.05rem;font-weight:500;letter-spacing:-.02em;color:var(--ink);
+  position:relative;display:inline-block;
+}
+.sig-name::after{
+  content:'';position:absolute;bottom:-1px;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,var(--blue),transparent);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .4s cubic-bezier(.16,1,.3,1);
+}
+.signature-banner:hover .sig-name::after{transform:scaleX(1);}
+.sig-right{
+  font-family:'Fira Code',monospace;font-size:10px;color:var(--muted);
+  display:flex;align-items:center;gap:8px;
+}
+.sig-tag{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:4px 10px;border-radius:100px;
+  border:1px solid rgba(37,99,235,.2);background:rgba(37,99,235,.05);
+  color:var(--blue);font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+}
+
+/* ── FOOTER MANIFESTO ── */
+footer{
+  position:relative;z-index:1;
+  border-top:1px solid var(--border2);
+  background:rgba(255,255,255,.5);
+  backdrop-filter:blur(20px);
+}
+.footer-inner{
+  max-width:1440px;margin:0 auto;
+  padding:5rem 2.5rem 4rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;
+  align-items:start;
+}
+.footer-manifesto{}
+.footer-eyebrow{
+  font-family:'Fira Code',monospace;font-size:9px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:1rem;
+  display:flex;align-items:center;gap:10px;
+}
+.footer-eyebrow::before{content:'';width:20px;height:1px;background:var(--muted);}
+.footer-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,4vw,3rem);font-weight:400;line-height:1.1;
+  letter-spacing:-.03em;color:var(--ink);margin-bottom:1.5rem;
+}
+.footer-title em{font-style:italic;color:var(--blue);}
+.footer-body{
+  font-size:14px;color:var(--muted2);line-height:1.85;
+  display:flex;flex-direction:column;gap:1rem;
+}
+.footer-body p{}
+.footer-body strong{color:var(--ink);font-weight:600;}
+.footer-highlight{
+  margin-top:1rem;
+  padding:1.25rem 1.5rem;
+  background:linear-gradient(135deg,rgba(37,99,235,.06),rgba(124,58,237,.04));
+  border:1px solid rgba(37,99,235,.15);
+  border-radius:16px;
+  font-size:15px;
+  color:var(--ink);
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  line-height:1.6;
+}
+.footer-right{display:flex;flex-direction:column;gap:2rem;}
+.footer-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.ftag{
+  font-family:'Fira Code',monospace;font-size:10px;letter-spacing:.08em;
+  padding:6px 14px;border-radius:100px;border:1px solid var(--border2);
+  color:var(--muted2);background:rgba(255,255,255,.6);
+  transition:all .2s;cursor:default;
+}
+.ftag:hover{background:rgba(255,255,255,.9);color:var(--ink);border-color:var(--border2);}
+.footer-stack{display:flex;flex-direction:column;gap:.6rem;}
+.fstack-label{font-family:'Fira Code',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem;}
+.fstack-item{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.5rem 0;border-bottom:1px solid var(--border);
+  font-size:13px;color:var(--muted2);
+}
+.fstack-item span:last-child{font-family:'Fira Code',monospace;font-size:10px;color:var(--blue);}
+.footer-bottom{
+  max-width:1440px;margin:0 auto;
+  padding:1.25rem 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid var(--border);
+  font-family:'Fira Code',monospace;font-size:10px;color:var(--muted);
+}
+.footer-bottom-sig{
+  font-family:'Playfair Display',serif;font-size:.95rem;font-weight:500;
+  color:var(--ink);letter-spacing:-.01em;
+}
+.footer-bottom-sig em{font-style:italic;color:var(--blue);}
+
+@media(max-width:900px){
+  .footer-inner{grid-template-columns:1fr;gap:3rem;}
+  .signature-banner{flex-direction:column;align-items:flex-start;gap:1rem;}
+  .footer-bottom{flex-direction:column;gap:.5rem;text-align:center;}
+}
+@media(max-width:1024px){
+  .actu-featured{grid-template-columns:1fr;}
+  .actu-side{grid-template-rows:auto;}
+  .actu-row{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:700px){
+  header{padding:1rem 1.25rem;}
+  .header-pill{display:none;}
+  .hero,section{padding-left:1.25rem;padding-right:1.25rem;}
+  .actu-row{grid-template-columns:1fr;}
+  .side-nav{display:none;}
+  .section-divider{padding:0 1.25rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="blobs">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+
+<!-- Side nav dots -->
+<div class="side-nav">
+  <div class="nav-dot active" onclick="scrollTo('#sec-actu')" title="Actualités"></div>
+  <div class="nav-dot" onclick="scrollTo('#sec-veille')" title="Veille"></div>
+  <div class="nav-dot" onclick="scrollTo('#sec-reco')" title="Recommandations"></div>
+</div>
+
+<!-- SIGNATURE BANNER -->
+<div class="signature-banner">
+  <div class="sig-left">
+    <div class="sig-avatar">OM</div>
+    <div class="sig-text">
+      <div class="sig-by">Un projet de</div>
+      <div class="sig-name">Ounchiouene Maheydine</div>
+    </div>
+  </div>
+  <div class="sig-right">
+    <span class="sig-tag">✦ Fait avec Claude AI</span>
+    <span>· Mai 2026</span>
+  </div>
+</div>
+
+<header>
+  <div class="logo">Si<em>g</em>nal</div>
+  <div class="header-pill">
+    <span class="live-dot"></span>
+    IA · temps réel
+  </div>
+  <div class="header-r">
+    <div class="date-lbl" id="date-lbl"></div>
+    <button class="refresh-all" id="refresh-btn" onclick="refreshAll()">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M10.5 6a4.5 4.5 0 1 1-1.318-3.182" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M7.5 2.5l1.682.318L9.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Actualiser
+    </button>
+  </div>
+</header>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">veille technologique · mai 2026</div>
+    <div class="hero-title">La tech<br>d'aujourd'<em>hui</em></div>
+    <p class="hero-sub">Actualités, bulletins de sécurité et recommandations curatées par intelligence artificielle, en un seul regard.</p>
+  </div>
+
+  <!-- ═══ SECTION 1 : ACTU ═══ -->
+  <div id="sec-actu">
+    <div class="section-divider reveal">
+      <div class="sdiv-line"></div>
+      <div class="sdiv-label">01 — Actualités Tech</div>
+      <div class="sdiv-line"></div>
+    </div>
+    <section>
+      <div class="sec-top reveal">
+        <div>
+          <div class="eyebrow">// Dernières nouvelles</div>
+          <div class="sec-title">Ce qui bouge<br>dans la <em>tech</em></div>
+        </div>
+        <div class="sec-meta" id="actu-meta">Chargement…</div>
+      </div>
+
+      <div class="ticker-wrap reveal">
+        <div class="ticker-label">Flash</div>
+        <div class="ticker-scroll">
+          <div class="ticker-inner" id="ticker-inner">
+            <div class="ticker-item"><span class="t-sep">◆</span>Génération en cours…</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="actu-container">
+        <div class="loader"><div class="spin-ring"></div><div class="loader-txt">Analyse des sources tech…</div></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ═══ SECTION 2 : VEILLE ═══ -->
+  <div id="sec-veille">
+    <div class="section-divider reveal">
+      <div class="sdiv-line"></div>
+      <div class="sdiv-label">02 — Veille Informatique</div>
+      <div class="sdiv-line"></div>
+    </div>
+    <section>
+      <div class="sec-top reveal">
+        <div>
+          <div class="eyebrow">// Bulletins & alertes</div>
+          <div class="sec-title">Veille<br><em>Informatique</em></div>
+        </div>
+        <div class="sec-meta" id="veille-meta">Chargement…</div>
+      </div>
+      <div class="filter-row reveal" id="veille-filters">
+        <button class="fb active" onclick="filterV('all',this)">Tout</button>
+        <button class="fb" onclick="filterV('Sécurité',this)">Sécurité</button>
+        <button class="fb" onclick="filterV('Réseau',this)">Réseau</button>
+        <button class="fb" onclick="filterV('Système',this)">Système</button>
+        <button class="fb" onclick="filterV('DevOps',this)">DevOps</button>
+        <button class="fb" onclick="filterV('Open Source',this)">Open Source</button>
+      </div>
+      <div id="veille-container" class="veille-grid">
+        <div class="loader" style="grid-column:1/-1"><div class="spin-ring"></div><div class="loader-txt">Scan des flux…</div></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ═══ SECTION 3 : RECO ═══ -->
+  <div id="sec-reco">
+    <div class="section-divider reveal">
+      <div class="sdiv-line"></div>
+      <div class="sdiv-label">03 — Recommandations</div>
+      <div class="sdiv-line"></div>
+    </div>
+    <section style="padding-bottom:7rem;">
+      <div class="sec-top reveal">
+        <div>
+          <div class="eyebrow">// Sélection du jour</div>
+          <div class="sec-title">Picks<br><em>d'aujourd'hui</em></div>
+        </div>
+        <div class="sec-meta" id="reco-meta">Curation IA</div>
+      </div>
+      <div id="reco-container" class="reco-grid">
+        <div class="loader" style="grid-column:1/-1"><div class="spin-ring"></div><div class="loader-txt">Curation en cours…</div></div>
+      </div>
+    </section>
+  </div>
+
+</div><!-- /page -->
+
+<!-- ═══ FOOTER MANIFESTO ═══ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-manifesto reveal">
+      <div class="footer-eyebrow">Le projet</div>
+      <div class="footer-title">Pourquoi<br>j'ai <em>construit</em><br>ça</div>
+      <div class="footer-body">
+        <p>
+          Tout a commencé par une conviction simple : <strong>les outils qu'on utilise au quotidien méritent mieux qu'un flux RSS ou un bookmark oublié.</strong> Je voulais créer quelque chose que j'aurais moi-même envie d'ouvrir chaque matin.
+        </p>
+        <p>
+          Plutôt que de passer des heures à coder une interface, à configurer des APIs, à écrire du CSS — j'ai décidé de <strong>collaborer avec une IA de bout en bout.</strong> Le design, le code, le contenu, la logique : tout a été pensé et construit avec Claude.
+        </p>
+        <p>
+          Ce projet est aussi une démonstration. Une preuve par l'exemple que <strong>l'IA n'est pas là pour remplacer la créativité humaine</strong> — elle est là pour l'amplifier. Pour transformer une idée vague en quelque chose de réel, en quelques heures.
+        </p>
+        <div class="footer-highlight">
+          « Avec l'IA, la limite n'est plus technique. Elle est imaginaire. Tout ce qu'on peut concevoir, on peut le construire. »
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-right reveal reveal-delay-2">
+      <div>
+        <div class="fstack-label">Stack du projet</div>
+        <div class="footer-stack">
+          <div class="fstack-item"><span>Interface</span><span>HTML · CSS · JS vanilla</span></div>
+          <div class="fstack-item"><span>Intelligence</span><span>Claude Sonnet 4</span></div>
+          <div class="fstack-item"><span>Contenu</span><span>Généré en temps réel</span></div>
+          <div class="fstack-item"><span>Design</span><span>Glassmorphism · Blobs</span></div>
+          <div class="fstack-item"><span>Hébergement</span><span>1 fichier HTML</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="fstack-label">Thèmes couverts</div>
+        <div class="footer-tags">
+          <span class="ftag">IA générative</span>
+          <span class="ftag">Data engineering</span>
+          <span class="ftag">Cybersécurité</span>
+          <span class="ftag">Cloud & DevOps</span>
+          <span class="ftag">Open Source</span>
+          <span class="ftag">Développement</span>
+          <span class="ftag">Veille informatique</span>
+          <span class="ftag">Tendances tech</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-bottom-sig">Ounchiouene <em>Maheydine</em></div>
+    <div>signal · veille tech · mai 2026</div>
+    <div>Propulsé par Claude AI · Anthropic</div>
+  </div>
+</footer>
+
+<script>
+// ── DATE ──
+const NOW = new Date();
+document.getElementById('date-lbl').textContent =
+  NOW.toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'short'});
+
+// ── SCROLL REVEAL ──
+const ro = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('visible'); ro.unobserve(e.target); }
+  });
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+function stagger(parent){
+  const items = parent.querySelectorAll('.card,.reco-card');
+  items.forEach((el,i)=>{
+    el.style.transitionDelay = (i*0.06)+'s';
+    el.classList.add('card-stagger');
+  });
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}});
+  },{threshold:0.08});
+  items.forEach(el=>obs.observe(el));
+}
+
+// ── NAV DOTS ──
+const sections = ['sec-actu','sec-veille','sec-reco'];
+const dots = document.querySelectorAll('.nav-dot');
+window.addEventListener('scroll',()=>{
+  const mid = window.innerHeight/2;
+  let active = 0;
+  sections.forEach((id,i)=>{
+    const el = document.getElementById(id);
+    if(el){const r=el.getBoundingClientRect();if(r.top<=mid)active=i;}
+  });
+  dots.forEach((d,i)=>d.classList.toggle('active',i===active));
+});
+function scrollTo(hash){document.querySelector(hash)?.scrollIntoView({behavior:'smooth'});}
+
+// ── API ──
+async function callClaude(prompt){
+  const res = await fetch("https://api.anthropic.com/v1/messages",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({
+      model:"claude-sonnet-4-20250514",
+      max_tokens:1600,
+      system:"Réponds UNIQUEMENT avec du JSON valide. Aucun texte, aucun backtick.",
+      messages:[{role:"user",content:prompt}]
+    })
+  });
+  const d = await res.json();
+  const raw = d.content.map(b=>b.text||'').join('').replace(/```json|```/g,'').trim();
+  return JSON.parse(raw);
+}
+
+// ── HELPERS ──
+function cc(cat){
+  return {IA:'ia',Data:'da',Dev:'de',Cloud:'cl','Sécurité':'se','Open Source':'os',Réseau:'re',Système:'re',DevOps:'de'}[cat]||'da';
+}
+function ic(lvl){return {Élevé:'i-h',Fort:'i-h',Moyen:'i-m',Faible:'i-l'}[lvl]||'';}
+function rtClass(t){return {Outil:'rt-outil',Lecture:'rt-lecture',Article:'rt-lecture',Vidéo:'rt-video',Podcast:'rt-podcast',Repository:'rt-repo',GitHub:'rt-repo',Librairie:'rt-repo'}[t]||'rt-outil';}
+
+function makeCard(item,isMain=false){
+  const c=document.createElement('div');
+  c.className=`card ${isMain?'card-main':''}`;
+  const cls=cc(item.cat), icls=ic(item.impact);
+  c.innerHTML=`
+    <div class="cpill ${cls}"><span class="cpill-dot"></span>${item.cat}</div>
+    <div class="c-title">${item.title}</div>
+    <div class="c-summary">${item.summary}</div>
+    <div class="c-footer">
+      <span class="c-time">${item.time||''}</span>
+      ${icls?`<span class="ibadge ${icls}">${item.impact}</span>`:''}
+      <span class="c-arrow">→</span>
+    </div>`;
+  return c;
+}
+
+// ── ACTU ──
+let veilleAll=[];
+async function loadActu(){
+  const c=document.getElementById('actu-container');
+  c.innerHTML=`<div class="loader"><div class="spin-ring"></div><div class="loader-txt">Analyse des sources tech…</div></div>`;
+  try{
+    const data=await callClaude(`Génère 7 actualités tech importantes pour mai 2026. Catégories: IA, Data, Dev, Cloud, Open Source.
+JSON exact:
+{"ticker":["Flash 1","Flash 2","Flash 3","Flash 4","Flash 5"],"news":[{"cat":"IA","title":"Titre max 9 mots","summary":"Résumé 2-3 phrases précises.","impact":"Élevé","time":"Il y a 2h"}]}
+7 news. La 1ère est la plus importante (featured). Impact: Élevé/Moyen/Faible.`);
+
+    const ticks=[...(data.ticker||[]),...(data.ticker||[])];
+    document.getElementById('ticker-inner').innerHTML=
+      ticks.map(t=>`<div class="ticker-item"><span class="t-sep">◆</span>${t}</div>`).join('');
+
+    document.getElementById('actu-meta').textContent=
+      `${data.news.length} articles · ${NOW.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})}`;
+
+    c.innerHTML='';
+    const featured=document.createElement('div');
+    featured.className='actu-featured';
+    featured.appendChild(makeCard(data.news[0],true));
+    const side=document.createElement('div');
+    side.className='actu-side';
+    [data.news[1],data.news[2]].forEach(n=>side.appendChild(makeCard(n)));
+    featured.appendChild(side);
+    c.appendChild(featured);
+
+    if(data.news.length>3){
+      const row=document.createElement('div');
+      row.className='actu-row';
+      row.style.marginTop='12px';
+      data.news.slice(3).forEach(n=>row.appendChild(makeCard(n)));
+      c.appendChild(row);
+    }
+    stagger(c);
+  }catch(e){
+    c.innerHTML=`<div class="err-box">⚠ ${e.message}</div>`;
+  }
+}
+
+// ── VEILLE ──
+async function loadVeille(){
+  const c=document.getElementById('veille-container');
+  c.innerHTML=`<div class="loader" style="grid-column:1/-1"><div class="spin-ring"></div><div class="loader-txt">Scan des flux…</div></div>`;
+  try{
+    const data=await callClaude(`Génère 9 actualités de veille informatique professionnelle pour mai 2026. Catégories: Sécurité (CVE, failles), Réseau, Système, DevOps, Open Source.
+JSON exact:
+{"news":[{"cat":"Sécurité","title":"Titre technique","summary":"2 phrases avec détails concrets.","impact":"Élevé","source":"CERT-FR","time":"Il y a 3h"}]}
+9 items. Varie les catégories. Impact: Élevé/Moyen/Faible.`);
+
+    veilleAll=data.news||[];
+    document.getElementById('veille-meta').textContent=
+      `${veilleAll.length} bulletins · ${NOW.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})}`;
+    renderVeille('all');
+  }catch(e){
+    c.innerHTML=`<div class="err-box" style="grid-column:1/-1">⚠ ${e.message}</div>`;
+  }
+}
+
+function renderVeille(filter){
+  const c=document.getElementById('veille-container');
+  const items=filter==='all'?veilleAll:veilleAll.filter(n=>n.cat===filter);
+  if(!items.length){c.innerHTML=`<div class="loader" style="grid-column:1/-1;color:var(--muted)">Aucun résultat.</div>`;return;}
+  c.innerHTML='';
+  items.forEach(item=>{
+    const cls=cc(item.cat),icls=ic(item.impact);
+    const card=document.createElement('div');
+    card.className='card';
+    card.innerHTML=`
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+        <div class="cpill ${cls}"><span class="cpill-dot"></span>${item.cat}</div>
+        ${item.source?`<span style="font-family:'Fira Code',monospace;font-size:9px;color:var(--muted)">${item.source}</span>`:''}
+      </div>
+      <div class="c-title">${item.title}</div>
+      <div class="c-summary">${item.summary}</div>
+      <div class="c-footer">
+        <span class="c-time">${item.time||''}</span>
+        ${icls?`<span class="ibadge ${icls}">${item.impact}</span>`:''}
+        <span class="c-arrow">→</span>
+      </div>`;
+    c.appendChild(card);
+  });
+  stagger(c);
+}
+
+function filterV(cat,btn){
+  document.querySelectorAll('#veille-filters .fb').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderVeille(cat);
+}
+
+// ── RECO ──
+async function loadReco(){
+  const c=document.getElementById('reco-container');
+  c.innerHTML=`<div class="loader" style="grid-column:1/-1"><div class="spin-ring"></div><div class="loader-txt">Curation en cours…</div></div>`;
+  try{
+    const data=await callClaude(`Génère 6 recommandations du jour pour dev/data engineer, mai 2026. Mix: outils, articles, repos GitHub, vidéos, podcasts.
+JSON exact:
+{"recs":[{"type":"Outil","icon":"⚡","title":"Nom réel","desc":"2 phrases: ce que c'est + usage.","why":"1 phrase: pourquoi pertinent aujourd'hui.","meta":"v2.0 · Open Source"}]}
+6 items. Types: Outil, Lecture, Vidéo, Podcast, Repository, Librairie. Noms réels uniquement.`);
+
+    document.getElementById('reco-meta').textContent=
+      `${data.recs.length} picks · ${NOW.toLocaleDateString('fr-FR',{day:'numeric',month:'long'})}`;
+    c.innerHTML='';
+    data.recs.forEach(item=>{
+      const bc=rtClass(item.type);
+      const card=document.createElement('div');
+      card.className='reco-card';
+      card.innerHTML=`
+        <div class="reco-top">
+          <div class="reco-icon">${item.icon||'◈'}</div>
+          <span class="rtype ${bc}">${item.type}</span>
+        </div>
+        <div class="r-title">${item.title}</div>
+        <div class="r-desc">${item.desc}</div>
+        <div class="r-why">💡 ${item.why}</div>
+        <div class="r-foot">
+          <span>${item.meta||''}</span>
+          <span class="r-link">Découvrir →</span>
+        </div>`;
+      c.appendChild(card);
+    });
+    stagger(c);
+  }catch(e){
+    c.innerHTML=`<div class="err-box" style="grid-column:1/-1">⚠ ${e.message}</div>`;
+  }
+}
+
+// ── REFRESH ──
+function refreshAll(){
+  const btn=document.getElementById('refresh-btn');
+  btn.classList.add('spin');
+  veilleAll=[];
+  loadActu();loadVeille();loadReco();
+  setTimeout(()=>btn.classList.remove('spin'),2500);
+}
+
+// ── INIT ──
+loadActu();loadVeille();loadReco();
+</script>
+</body>
+</html>
