@@ -499,7 +499,7 @@ footer{
   </div>
   <div class="sig-right">
     <span class="sig-tag">✦ Fait avec Codex et Hermes Agent</span>
-    <span>· 20 mai 2026</span>
+    <span>· 21 mai 2026</span>
   </div>
 </div>
 
@@ -522,7 +522,7 @@ footer{
 
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-eyebrow">veille technologique · 20 mai 2026</div>
+    <div class="hero-eyebrow">veille technologique · 21 mai 2026</div>
     <div class="hero-title">La tech<br>d'aujourd'<em>hui</em></div>
     <p class="hero-sub">Actualités, bulletins de sécurité et recommandations sélectionnés avec l’aide de l’IA pour garder une vision claire de la tech.</p>
   </div>
@@ -662,7 +662,7 @@ footer{
 
   <div class="footer-bottom">
     <div class="footer-bottom-sig">Ounchiouene <em>Maheydine</em></div>
-    <div>signal · veille tech · 20 mai 2026</div>
+    <div>signal · veille tech · 21 mai 2026</div>
     <div>IA assistée · GitHub Pages</div>
   </div>
 </footer>
@@ -709,43 +709,213 @@ function scrollTo(hash){document.querySelector(hash)?.scrollIntoView({behavior:'
 
 // ── DONNÉES SOURCÉES ──
 const ACTU_DATA = {
-  ticker: [
-    "Google I/O 2026 place l’IA agentique au centre de sa feuille de route",
-    "Anthropic recrute Andrej Karpathy pour renforcer le pré-entraînement de Claude",
-    "Figma ajoute un assistant IA à son canevas collaboratif",
-    "Microsoft prépare la sortie progressive des codes SMS pour l’authentification",
-    "Les IA de sécurité deviennent elles-mêmes des cibles d’injection de prompt",
-    "La maîtrise des données devient un levier politique et de surveillance en Russie"
+  "ticker": [
+    "Microsoft corrige deux failles Defender déjà exploitées",
+    "Google I/O 2026 accélère les outils développeurs autour de Gemini 3.5",
+    "Des paquets npm @antv compromis visent les secrets CI/CD",
+    "Cloudflare généralise AI Security for Apps pour cartographier le shadow AI",
+    "RHEL 10.2 et 9.8 ajoutent une assistance IA côté ligne de commande",
+    "OpenAI Symphony propose une approche SPEC.md pour orchestrer les agents de code"
   ],
-  news: [
-    {cat:"IA",title:"Google pousse l’IA agentique à grande échelle",summary:"01net revient sur Google I/O 2026, centrée sur des agents capables de poursuivre des objectifs plutôt que de seulement générer du contenu. Important : Google veut transformer recherche, Android et productivité autour de cette logique d’action.",impact:"Moyen",time:"01net · 20 mai",url:"https://www.01net.com/actualites/google-annonce-lere-de-lia-agentique-quest-ce-que-ca-va-changer.html"},
-    {cat:"IA",title:"Andrej Karpathy rejoint Anthropic",summary:"Siècle Digital rapporte l’arrivée chez Anthropic de l’ex-cofondateur d’OpenAI et ancien responsable IA chez Tesla. Le signal est fort : la course aux modèles Claude se joue aussi sur le talent de recherche et le pré-entraînement.",impact:"Moyen",time:"Siècle Digital · 20 mai",url:"https://siecledigital.fr/2026/05/20/anthropic-recrute-andrej-karpathy-lun-des-cerveaux-historiques-dopenai/"},
-    {cat:"Dev",title:"Figma ajoute un assistant IA au design collaboratif",summary:"TechCrunch indique que Figma intègre un assistant IA dans Figma Design. C’est une nouvelle étape pour les outils créatifs : l’IA entre dans le flux de travail, pas seulement dans des générateurs séparés.",impact:"Moyen",time:"TechCrunch · 20 mai",url:"https://techcrunch.com/2026/05/20/figma-adds-an-ai-assistant-to-its-collaborative-canvas/"},
-    {cat:"Sécurité",title:"Microsoft veut remplacer les codes SMS",summary:"The Register détaille le retrait progressif des codes SMS chez Microsoft au profit de méthodes plus robustes. Le message est clair : le SMS reste pratique, mais trop faible face au phishing, au SIM swapping et aux attaques d’identité.",impact:"Moyen",time:"The Register · 20 mai",url:"https://www.theregister.com/on-prem/2026/05/20/microsoft-says-cu-l8r-to-text-message-security/5243304"},
-    {cat:"Sécurité",title:"Les IA de sécurité exposées au prompt injection",summary:"Silicon.fr relaie des tests Cloudflare sur 18 400 appels API montrant que des modèles utilisés en sécurité peuvent être manipulés par du contenu caché. Le sujet compte : les assistants cyber deviennent une surface d’attaque.",impact:"Moyen",time:"Silicon.fr · 20 mai",url:"https://www.silicon.fr/cybersecurite-1371/les-ia-de-securite-nouvelles-cibles-de-linjection-de-prompt-227263"},
-    {cat:"Data",title:"En Russie, les données deviennent un enjeu de pouvoir",summary:"Next.ink décrit comment le Kremlin étend le contrôle numérique et la surveillance depuis l’invasion de l’Ukraine. Au-delà de la géopolitique, l’article rappelle que souveraineté, infrastructures et données personnelles sont désormais liées.",impact:"Moyen",time:"Next.ink · 20 mai",url:"https://next.ink/238520/pour-le-kremlin-le-controle-des-donnees-est-un-enjeu-de-survie/"}
+  "news": [
+    {
+      "cat": "Sécurité",
+      "title": "Microsoft Defender : deux zero-days exploités",
+      "summary": "BleepingComputer rapporte que Microsoft déploie des correctifs pour CVE-2026-41091 et CVE-2026-45498, déjà utilisées en attaque contre Defender. Priorité : vérifier les versions de plateforme antimalware et la couverture des postes Windows.",
+      "impact": "Élevé",
+      "time": "BleepingComputer · 21 mai",
+      "url": "https://www.bleepingcomputer.com/news/security/microsoft-warns-of-new-defender-zero-days-exploited-in-attacks/"
+    },
+    {
+      "cat": "IA",
+      "title": "Google I/O : Gemini 3.5 et Antigravity pour les développeurs",
+      "summary": "Le blog Google Developers résume les annonces I/O : Gemini 3.5, Antigravity 2.0 et outils agentiques pour Android, web et migration de code. Le signal : l’IA passe du chatbot à l’environnement de développement.",
+      "impact": "Moyen",
+      "time": "Google Developers · 21 mai",
+      "url": "https://developers.googleblog.com/all-the-news-from-the-google-io-2026-developer-keynote/"
+    },
+    {
+      "cat": "DevOps",
+      "title": "Mini Shai Hulud : packages npm compromis et secrets CI/CD",
+      "summary": "Microsoft détaille une compromission de packages @antv capable de voler des identifiants dans les pipelines. À retenir : verrouiller les dépendances, surveiller les scripts lifecycle npm et accélérer la rotation des secrets exposés.",
+      "impact": "Élevé",
+      "time": "Microsoft Security · 20 mai",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/05/20/mini-shai-hulud-compromised-antv-npm-packages-enable-ci-cd-credential-theft/"
+    },
+    {
+      "cat": "Cloud",
+      "title": "Cloudflare lance AI Security for Apps en disponibilité générale",
+      "summary": "Cloudflare annonce un contrôle de sécurité pour découvrir les endpoints IA et protéger les applications utilisant des modèles. Utile pour repérer le shadow AI, les injections de prompt et les usages non inventoriés.",
+      "impact": "Moyen",
+      "time": "Cloudflare · 20 mai",
+      "url": "https://blog.cloudflare.com/ai-security-for-apps-ga/"
+    },
+    {
+      "cat": "Système",
+      "title": "RHEL 10.2 et 9.8 misent sur l’exploitation assistée par IA",
+      "summary": "Red Hat présente ses nouvelles versions Enterprise Linux avec assistance IA en CLI, Image Mode et améliorations sécurité. Pour un profil sys/réseau-cloud, c’est un bon indicateur de l’évolution des distributions d’entreprise.",
+      "impact": "Moyen",
+      "time": "Red Hat · 20 mai",
+      "url": "https://www.redhat.com/en/blog/rhel-102-and-98-intelligent-evolution-enterprise-linux"
+    },
+    {
+      "cat": "Dev",
+      "title": "OpenAI Symphony structure l’orchestration d’agents de code",
+      "summary": "InfoQ présente Symphony, une approche open source centrée sur SPEC.md pour coordonner plusieurs agents autonomes via des outils projet. Intéressant pour cadrer les tâches, validations et responsabilités dans le développement assisté par IA.",
+      "impact": "Moyen",
+      "time": "InfoQ · 21 mai",
+      "url": "https://www.infoq.com/news/2026/05/openai-symphony-agents/"
+    }
   ]
 };
 
 const VEILLE_DATA = [
-  {cat:"DevOps",title:"1Password et OpenAI sécurisent les secrets des agents Codex",summary:"SecurityWeek rapporte l’intégration d’un modèle d’identifiants just-in-time pour OpenAI Codex. À retenir côté DevSecOps : éviter les secrets persistants dans les prompts, dépôts et contextes d’agents IA.",impact:"Élevé",source:"SecurityWeek",time:"Codex · 20 mai",url:"https://www.securityweek.com/1password-teams-with-openai-to-stop-ai-coding-agents-from-leaking-credentials/"},
-  {cat:"Sécurité",title:"Claude Code : contournement de sandbox corrigé",summary:"SecurityWeek signale qu’Anthropic a corrigé une faille permettant de contourner le sandbox réseau de Claude Code. À faire : mettre à jour les outils, limiter les droits réseau et surveiller les usages d’agents sur code non fiable.",impact:"Élevé",source:"SecurityWeek",time:"Claude Code · 20 mai",url:"https://www.securityweek.com/anthropic-silently-patches-claude-code-sandbox-bypass/"},
-  {cat:"DevOps",title:"GitHub confirme un vol de dépôts internes via extension VS Code",summary:"The Record indique que TeamPCP aurait compromis un poste GitHub avec une extension piégée, exposant des milliers de dépôts internes sans preuve de données client volées. À vérifier : extensions autorisées, postes dev et rotation de secrets.",impact:"Élevé",source:"The Record",time:"GitHub · 20 mai",url:"https://therecord.media/github-confirms-teampcp-hack-customers-unaffected"},
-  {cat:"Sécurité",title:"Drupal : correctif critique à appliquer rapidement",summary:"BleepingComputer relaie l’alerte Drupal sur une mise à jour core à risque d’exploitation rapide. Priorité admin : sauvegarde, test de compatibilité, déploiement du patch et surveillance des journaux après publication.",impact:"Élevé",source:"BleepingComputer",time:"Drupal · 20 mai",url:"https://www.bleepingcomputer.com/news/security/drupal-critical-update-to-fix-bug-with-high-exploitation-risk/"},
-  {cat:"Cloud",title:"Cloudflare généralise AI Security for Apps",summary:"Cloudflare annonce la disponibilité générale de son contrôle de sécurité pour applications IA, avec découverte gratuite des endpoints IA. Utile pour repérer le shadow AI, suivre les modèles exposés et réduire les injections ou abus applicatifs.",impact:"Moyen",source:"Cloudflare",time:"AI security · 20 mai",url:"https://blog.cloudflare.com/ai-security-for-apps-ga/"},
-  {cat:"Système",title:"RHEL 10.2 et 9.8 disponibles avec assistance IA en CLI",summary:"Phoronix relaie les sorties RHEL 10.2 et 9.8, incluant notamment l’outil goose et des améliorations de sortie terminal. À planifier : tests de compatibilité, politiques d’usage IA en console et fenêtres de montée de version.",impact:"Moyen",source:"Phoronix",time:"RHEL · 20 mai",url:"https://www.phoronix.com/news/Red-Hat-RHEL-10.2-RHEL-9.8"},
-  {cat:"Cloud",title:"OpenAI détaille son architecture WebRTC pour la voix temps réel",summary:"InfoQ résume l’architecture WebRTC utilisée par OpenAI pour de la voix IA à faible latence et à grande échelle. À suivre pour les équipes plateforme : relayage média, Kubernetes, équilibrage et résilience temps réel.",impact:"Moyen",source:"InfoQ",time:"WebRTC · 20 mai",url:"https://www.infoq.com/news/2026/05/openai-voice-ai-scale/"},
-  {cat:"Open Source",title:"OpenSSF alerte sur la préparation au Cyber Resilience Act",summary:"DevOps.com rapporte l’avertissement d’OpenSSF : l’échéance européenne du CRA approche et les projets restent mal préparés. À anticiper : SBOM, gestion des vulnérabilités, responsabilités fournisseur et preuves de conformité.",impact:"Moyen",source:"DevOps.com",time:"CRA · 20 mai",url:"https://devops.com/openssfs-crob-the-runway-is-rapidly-running-out-on-eu-cra-readiness/"},
-  {cat:"Sécurité",title:"Webworm abuse Discord et Microsoft Graph pour son C2",summary:"The Hacker News décrit de nouvelles portes dérobées EchoCreep et GraphWorm attribuées à Webworm. À surveiller : trafic Discord/Graph inhabituel, règles proxy, journaux OAuth Microsoft et détections sur canaux C2 légitimes détournés.",impact:"Élevé",source:"The Hacker News",time:"Threat intel · 20 mai",url:"https://thehackernews.com/2026/05/webworm-deploys-echocreep-and-graphworm.html"},
-  {cat:"Système",title:"Windows 11 : un exploit SYSTEM public inquiète",summary:"Clubic signale MiniPlasma, un exploit public visant des machines Windows 11 à jour via un pilote lié aux fonctions cloud. Pour les parcs Windows : suivre l’avis Microsoft, durcir les droits locaux et surveiller les preuves de concept.",impact:"Élevé",source:"Clubic",time:"Windows · 20 mai",url:"https://www.clubic.com/actualite-613531-windows-11-cette-faille-censee-etre-corrigee-depuis-plus-de-cinq-ans-refait-surface-sur-des-pc-a-jour.html"}
+  {
+    "cat": "Sécurité",
+    "title": "Defender : suivre CVE-2026-41091 et CVE-2026-45498",
+    "summary": "The Hacker News confirme deux vulnérabilités Defender activement exploitées, avec risque d’élévation de privilèges et de déni de service. Vérifier la version de la plateforme antimalware, les journaux EDR et l’état des mises à jour.",
+    "impact": "Élevé",
+    "source": "The Hacker News",
+    "time": "Defender · 21 mai",
+    "url": "https://thehackernews.com/2026/05/microsoft-warns-of-two-actively.html"
+  },
+  {
+    "cat": "Sécurité",
+    "title": "MDASH : Microsoft utilise l’IA pour trouver des failles Windows",
+    "summary": "The Hacker News indique que le système MDASH de Microsoft a identifié 16 failles corrigées au Patch Tuesday. Point de veille : les mêmes méthodes IA qui aident la défense vont aussi accélérer la recherche offensive.",
+    "impact": "Moyen",
+    "source": "The Hacker News",
+    "time": "Windows · 21 mai",
+    "url": "https://thehackernews.com/2026/05/microsofts-mdash-ai-system-finds-16.html"
+  },
+  {
+    "cat": "Sécurité",
+    "title": "Azure Linux : avis CERT-FR à vérifier",
+    "summary": "Le CERT-FR publie un avis sur plusieurs vulnérabilités dans Microsoft Azure Linux. Action simple : croiser l’inventaire des images/VM concernées avec les bulletins éditeur et planifier les correctifs.",
+    "impact": "Élevé",
+    "source": "CERT-FR",
+    "time": "Azure Linux · 21 mai",
+    "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0558/"
+  },
+  {
+    "cat": "Réseau",
+    "title": "Cisco Catalyst SD-WAN : rappel d’actualité CERT-FR",
+    "summary": "Le bulletin CERTFR-2026-ACT-022 revient sur CVE-2026-20182 affectant Catalyst SD-WAN. À contrôler : exposition des équipements, versions déployées, accès d’administration et présence de correctifs.",
+    "impact": "Élevé",
+    "source": "CERT-FR",
+    "time": "Réseau · 21 mai",
+    "url": "https://www.cert.ssi.gouv.fr/actualite/CERTFR-2026-ACT-022/"
+  },
+  {
+    "cat": "Cloud",
+    "title": "Kubernetes v1.36 durcit les bases de sécurité",
+    "summary": "InfoQ résume Kubernetes v1.36 : User Namespaces en GA, Mutating Admission Policies et autorisation fine du kubelet. Pour les admins plateforme : tester les politiques avant upgrade et revoir les contrôles d’accès.",
+    "impact": "Moyen",
+    "source": "InfoQ",
+    "time": "Kubernetes · mai",
+    "url": "https://www.infoq.com/news/2026/05/kubernetes-1-36-released/"
+  },
+  {
+    "cat": "IA",
+    "title": "Benchmarker des agents IA sur Kubernetes",
+    "summary": "InfoQ décrit des pratiques de benchmark pour agents IA exécutés sur Kubernetes. À suivre pour comprendre ressources GPU/CPU, observabilité, isolation et coûts quand les agents deviennent des workloads cloud.",
+    "impact": "Moyen",
+    "source": "InfoQ",
+    "time": "Agents · mai",
+    "url": "https://www.infoq.com/news/2026/05/ai-agents-kubernetes-rag/"
+  },
+  {
+    "cat": "IA",
+    "title": "Anthropic rachète Stainless, outil utilisé par OpenAI, Google et Cloudflare",
+    "summary": "TechCrunch rapporte l’acquisition de Stainless par Anthropic. Le point important : les fournisseurs IA investissent dans les briques développeurs et API, pas seulement dans les modèles.",
+    "impact": "Moyen",
+    "source": "TechCrunch",
+    "time": "Anthropic · 18 mai",
+    "url": "https://techcrunch.com/2026/05/18/anthropic-has-acquired-the-dev-tools-startup-used-by-openai-google-and-cloudflare/"
+  },
+  {
+    "cat": "IA",
+    "title": "Google I/O 2026 : 100 annonces à trier",
+    "summary": "Google publie une synthèse des annonces I/O : Gemini Omni, Antigravity, Universal Cart et outils IA. À garder : distinguer les annonces produit utiles des effets d’annonce, surtout pour cloud, Android et dev tools.",
+    "impact": "Moyen",
+    "source": "Google Blog",
+    "time": "I/O · 20 mai",
+    "url": "https://blog.google/innovation-and-ai/technology/ai/google-io-2026-all-our-announcements/"
+  },
+  {
+    "cat": "Système",
+    "title": "RHEL 10.2 : Phoronix pointe l’assistance IA en CLI",
+    "summary": "Phoronix met l’accent sur la nouvelle assistance en ligne de commande de RHEL 10.2. À observer côté entreprise : quelles commandes sont suggérées, quelles données sortent du poste et comment encadrer l’usage.",
+    "impact": "Moyen",
+    "source": "Phoronix",
+    "time": "RHEL · 20 mai",
+    "url": "https://www.phoronix.com/news/Red-Hat-RHEL-10.2-RHEL-9.8"
+  },
+  {
+    "cat": "Open Source",
+    "title": "OpenSSF : se préparer au Cyber Resilience Act",
+    "summary": "DevOps.com relaie l’alerte d’OpenSSF : l’écosystème open source doit accélérer sur SBOM, gestion des vulnérabilités et preuves de conformité avant les échéances européennes du CRA.",
+    "impact": "Moyen",
+    "source": "DevOps.com",
+    "time": "CRA · 20 mai",
+    "url": "https://devops.com/openssfs-crob-the-runway-is-rapidly-running-out-on-eu-cra-readiness/"
+  }
 ];
 const RECO_DATA = [
-  {type:"Outil",icon:"🔐",title:"Secrets just-in-time pour Codex",desc:"SecurityWeek détaille le partenariat 1Password/OpenAI pour éviter que les agents Codex manipulent des secrets persistants.",why:"À lire avant de brancher des agents IA sur des dépôts, shells ou environnements CI/CD.",meta:"DevSecOps · IA",url:"https://www.securityweek.com/1password-teams-with-openai-to-stop-ai-coding-agents-from-leaking-credentials/"},
-  {type:"Lecture",icon:"🧩",title:"Sandbox Claude Code",desc:"Analyse SecurityWeek sur le contournement corrigé du sandbox réseau de Claude Code.",why:"Bon rappel : les agents de code doivent être isolés, journalisés et mis à jour comme tout outil sensible.",meta:"Claude · sécurité",url:"https://www.securityweek.com/anthropic-silently-patches-claude-code-sandbox-bypass/"},
-  {type:"Lecture",icon:"🧪",title:"GitHub et extensions VS Code",desc:"The Record résume l’incident TeamPCP visant des dépôts internes GitHub via une extension piégée.",why:"Utile pour revoir la allowlist d’extensions, l’hygiène des postes développeurs et la rotation de secrets.",meta:"Supply chain · Dev",url:"https://therecord.media/github-confirms-teampcp-hack-customers-unaffected"},
-  {type:"Outil",icon:"☁️",title:"Cloudflare AI Security for Apps",desc:"Annonce Cloudflare : découverte d’endpoints IA et protections pour applications utilisant des modèles.",why:"Pratique pour commencer un inventaire shadow AI côté applications exposées sur Internet.",meta:"Cloud · sécurité IA",url:"https://blog.cloudflare.com/ai-security-for-apps-ga/"},
-  {type:"Lecture",icon:"🧱",title:"OpenAI et WebRTC temps réel",desc:"InfoQ explique l’architecture de voix IA faible latence construite autour de WebRTC.",why:"Bonne référence pour les équipes qui conçoivent des services média/IA scalables.",meta:"Architecture · WebRTC",url:"https://www.infoq.com/news/2026/05/openai-voice-ai-scale/"},
-  {type:"Lecture",icon:"📜",title:"Préparer le CRA européen",desc:"DevOps.com relaie l’alerte OpenSSF sur la préparation insuffisante au Cyber Resilience Act.",why:"À intégrer dans les checklists SBOM, vulnérabilités et gouvernance open source.",meta:"Open source · conformité",url:"https://devops.com/openssfs-crob-the-runway-is-rapidly-running-out-on-eu-cra-readiness/"}
+  {
+    "type": "Lecture",
+    "icon": "🛡️",
+    "title": "Defender zero-days — The Hacker News",
+    "desc": "Résumé clair des deux failles Defender exploitées et des correctifs Microsoft.",
+    "why": "À lire pour prioriser les postes Windows et comprendre le risque SYSTEM/DoS.",
+    "meta": "Cyber · Windows",
+    "url": "https://thehackernews.com/2026/05/microsoft-warns-of-two-actively.html"
+  },
+  {
+    "type": "Lecture",
+    "icon": "📦",
+    "title": "Mini Shai Hulud — Microsoft Security",
+    "desc": "Analyse de packages npm compromis visant les secrets CI/CD.",
+    "why": "Très utile pour relier supply chain, npm, CI/CD et rotation de secrets.",
+    "meta": "DevSecOps · npm",
+    "url": "https://www.microsoft.com/en-us/security/blog/2026/05/20/mini-shai-hulud-compromised-antv-npm-packages-enable-ci-cd-credential-theft/"
+  },
+  {
+    "type": "Lecture",
+    "icon": "☁️",
+    "title": "Kubernetes v1.36 — InfoQ",
+    "desc": "Synthèse des nouveautés sécurité, API et support des workloads IA.",
+    "why": "Bonne base pour suivre les évolutions cloud-native importantes pour admin sys/cloud.",
+    "meta": "Kubernetes · cloud",
+    "url": "https://www.infoq.com/news/2026/05/kubernetes-1-36-released/"
+  },
+  {
+    "type": "Outil",
+    "icon": "🔎",
+    "title": "Cloudflare AI Security for Apps",
+    "desc": "Découverte d’endpoints IA et protections pour applications utilisant des modèles.",
+    "why": "Intéressant pour comprendre la sécurité des applications IA exposées.",
+    "meta": "Cloud · sécurité IA",
+    "url": "https://blog.cloudflare.com/ai-security-for-apps-ga/"
+  },
+  {
+    "type": "Lecture",
+    "icon": "🐧",
+    "title": "RHEL 10.2 et 9.8",
+    "desc": "Présentation Red Hat des nouveautés Enterprise Linux, IA en CLI et Image Mode.",
+    "why": "À suivre si tu vises système, réseau et cloud en environnement entreprise.",
+    "meta": "Linux · entreprise",
+    "url": "https://www.redhat.com/en/blog/rhel-102-and-98-intelligent-evolution-enterprise-linux"
+  },
+  {
+    "type": "Lecture",
+    "icon": "🤖",
+    "title": "OpenAI Symphony — InfoQ",
+    "desc": "Présentation d’une orchestration d’agents de code autour de SPEC.md.",
+    "why": "Utile pour comprendre comment structurer les agents IA sans perdre le contrôle projet.",
+    "meta": "IA · dev tools",
+    "url": "https://www.infoq.com/news/2026/05/openai-symphony-agents/"
+  }
 ];
 
 // ── HELPERS ──
