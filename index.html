@@ -499,7 +499,7 @@ footer{
   </div>
   <div class="sig-right">
     <span class="sig-tag">✦ Fait avec Codex et Hermes Agent</span>
-    <span>· 21 mai 2026</span>
+    <span>· 23 mai 2026</span>
   </div>
 </div>
 
@@ -522,7 +522,7 @@ footer{
 
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-eyebrow">veille technologique · 21 mai 2026</div>
+    <div class="hero-eyebrow">veille technologique · 23 mai 2026</div>
     <div class="hero-title">La tech<br>d'aujourd'<em>hui</em></div>
     <p class="hero-sub">Actualités, bulletins de sécurité et recommandations sélectionnés avec l’aide de l’IA pour garder une vision claire de la tech.</p>
   </div>
@@ -662,7 +662,7 @@ footer{
 
   <div class="footer-bottom">
     <div class="footer-bottom-sig">Ounchiouene <em>Maheydine</em></div>
-    <div>signal · veille tech · 21 mai 2026</div>
+    <div>signal · veille tech · 23 mai 2026</div>
     <div>IA assistée · GitHub Pages</div>
   </div>
 </footer>
@@ -710,61 +710,61 @@ function scrollTo(hash){document.querySelector(hash)?.scrollIntoView({behavior:'
 // ── DONNÉES SOURCÉES ──
 const ACTU_DATA = {
   "ticker": [
-    "Microsoft corrige deux failles Defender déjà exploitées",
-    "Google I/O 2026 accélère les outils développeurs autour de Gemini 3.5",
-    "Des paquets npm @antv compromis visent les secrets CI/CD",
-    "Cloudflare généralise AI Security for Apps pour cartographier le shadow AI",
-    "RHEL 10.2 et 9.8 ajoutent une assistance IA côté ligne de commande",
-    "OpenAI Symphony propose une approche SPEC.md pour orchestrer les agents de code"
+    "Fragnesia/Dirty Frag : nouvelle alerte root sur noyau Linux",
+    "Azure : une faille critique corrigée sans CVE public inquiète les défenseurs",
+    "Microsoft Defender : deux vulnérabilités déjà exploitées à corriger vite",
+    "Claude Code met en avant agents gérés et workflows proactifs",
+    "Google I/O 2026 renforce Gemini, Antigravity et AI Studio côté dev",
+    "CERT-FR publie un avis noyau Linux Red Hat du 22 mai"
   ],
   "news": [
     {
       "cat": "Sécurité",
-      "title": "Microsoft Defender : deux zero-days exploités",
-      "summary": "BleepingComputer rapporte que Microsoft déploie des correctifs pour CVE-2026-41091 et CVE-2026-45498, déjà utilisées en attaque contre Defender. Priorité : vérifier les versions de plateforme antimalware et la couverture des postes Windows.",
+      "title": "Linux : Fragnesia permettrait une élévation root",
+      "summary": "BleepingComputer signale Fragnesia, une nouvelle faille de la famille Dirty Frag affectant les noyaux Linux antérieurs au 13 mai 2026. Le signal est clair : surveiller les correctifs kernel et éviter de laisser des hôtes/containers non patchés.",
       "impact": "Élevé",
-      "time": "BleepingComputer · 21 mai",
-      "url": "https://www.bleepingcomputer.com/news/security/microsoft-warns-of-new-defender-zero-days-exploited-in-attacks/"
-    },
-    {
-      "cat": "IA",
-      "title": "Google I/O : Gemini 3.5 et Antigravity pour les développeurs",
-      "summary": "Le blog Google Developers résume les annonces I/O : Gemini 3.5, Antigravity 2.0 et outils agentiques pour Android, web et migration de code. Le signal : l’IA passe du chatbot à l’environnement de développement.",
-      "impact": "Moyen",
-      "time": "Google Developers · 21 mai",
-      "url": "https://developers.googleblog.com/all-the-news-from-the-google-io-2026-developer-keynote/"
-    },
-    {
-      "cat": "DevOps",
-      "title": "Mini Shai Hulud : packages npm compromis et secrets CI/CD",
-      "summary": "Microsoft détaille une compromission de packages @antv capable de voler des identifiants dans les pipelines. À retenir : verrouiller les dépendances, surveiller les scripts lifecycle npm et accélérer la rotation des secrets exposés.",
-      "impact": "Élevé",
-      "time": "Microsoft Security · 20 mai",
-      "url": "https://www.microsoft.com/en-us/security/blog/2026/05/20/mini-shai-hulud-compromised-antv-npm-packages-enable-ci-cd-credential-theft/"
+      "time": "BleepingComputer · 23 mai",
+      "url": "https://www.bleepingcomputer.com/news/security/new-fragnesia-linux-flaw-lets-attackers-gain-root-privileges/"
     },
     {
       "cat": "Cloud",
-      "title": "Cloudflare lance AI Security for Apps en disponibilité générale",
-      "summary": "Cloudflare annonce un contrôle de sécurité pour découvrir les endpoints IA et protéger les applications utilisant des modèles. Utile pour repérer le shadow AI, les injections de prompt et les usages non inventoriés.",
-      "impact": "Moyen",
-      "time": "Cloudflare · 20 mai",
-      "url": "https://blog.cloudflare.com/ai-security-for-apps-ga/"
+      "title": "Azure : faille critique corrigée sans CVE public",
+      "summary": "BleepingComputer rapporte qu’un chercheur a décrit une élévation de privilèges liée au rôle Backup Contributor Azure, corrigée sans avis ni CVE public. À retenir : vérifier les rôles sensibles, les journaux et les délégations historiques.",
+      "impact": "Élevé",
+      "time": "BleepingComputer · 20 mai",
+      "url": "https://www.bleepingcomputer.com/news/security/microsoft-rejects-critical-azure-vulnerability-report-no-cve-issued/"
     },
     {
-      "cat": "Système",
-      "title": "RHEL 10.2 et 9.8 misent sur l’exploitation assistée par IA",
-      "summary": "Red Hat présente ses nouvelles versions Enterprise Linux avec assistance IA en CLI, Image Mode et améliorations sécurité. Pour un profil sys/réseau-cloud, c’est un bon indicateur de l’évolution des distributions d’entreprise.",
+      "cat": "Sécurité",
+      "title": "Microsoft Defender : deux failles exploitées",
+      "summary": "The Hacker News confirme l’exploitation active de CVE-2026-41091 et CVE-2026-45498 dans Defender. Priorité : contrôler la version de la plateforme antimalware et accélérer la mise à jour des postes Windows.",
+      "impact": "Élevé",
+      "time": "The Hacker News · 21 mai",
+      "url": "https://thehackernews.com/2026/05/microsoft-warns-of-two-actively.html"
+    },
+    {
+      "cat": "IA",
+      "title": "Claude Code pousse les agents gérés",
+      "summary": "InfoQ résume Code with Claude 2026 : agents gérés, workflows proactifs et automatisation plus profonde du développement. Pour les équipes, l’enjeu devient la validation, la traçabilité et le contrôle humain des changements.",
       "impact": "Moyen",
-      "time": "Red Hat · 20 mai",
-      "url": "https://www.redhat.com/en/blog/rhel-102-and-98-intelligent-evolution-enterprise-linux"
+      "time": "InfoQ · 18 mai",
+      "url": "https://www.infoq.com/news/2026/05/code-with-claude/"
     },
     {
       "cat": "Dev",
-      "title": "OpenAI Symphony structure l’orchestration d’agents de code",
-      "summary": "InfoQ présente Symphony, une approche open source centrée sur SPEC.md pour coordonner plusieurs agents autonomes via des outils projet. Intéressant pour cadrer les tâches, validations et responsabilités dans le développement assisté par IA.",
+      "title": "OpenAI Codex arrive dans l’app mobile ChatGPT",
+      "summary": "TechCrunch indique que Codex peut être suivi et piloté depuis mobile : revue de sorties, approbation de commandes et lancement de tâches. Le développement assisté devient plus continu, mais demande encore des garde-fous.",
       "impact": "Moyen",
-      "time": "InfoQ · 21 mai",
-      "url": "https://www.infoq.com/news/2026/05/openai-symphony-agents/"
+      "time": "TechCrunch · 14 mai",
+      "url": "https://techcrunch.com/2026/05/14/openai-says-codex-is-coming-to-your-phone/"
+    },
+    {
+      "cat": "Système",
+      "title": "CERT-FR : nouvelles vulnérabilités noyau Red Hat",
+      "summary": "Le CERT-FR publie l’avis CERTFR-2026-AVI-0640 sur plusieurs vulnérabilités du noyau Linux Red Hat. À faire : croiser les RHSA concernés avec l’inventaire serveurs et planifier les redémarrages nécessaires.",
+      "impact": "Élevé",
+      "time": "CERT-FR · 22 mai",
+      "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0640/"
     }
   ]
 };
@@ -772,89 +772,89 @@ const ACTU_DATA = {
 const VEILLE_DATA = [
   {
     "cat": "Sécurité",
-    "title": "Defender : suivre CVE-2026-41091 et CVE-2026-45498",
-    "summary": "The Hacker News confirme deux vulnérabilités Defender activement exploitées, avec risque d’élévation de privilèges et de déni de service. Vérifier la version de la plateforme antimalware, les journaux EDR et l’état des mises à jour.",
+    "title": "DirtyDecrypt : un PoC public pour CVE-2026-31635",
+    "summary": "The Hacker News détaille la publication d’un exploit PoC pour une faille noyau Linux de type élévation locale de privilèges. Important pour les admins : un PoC public réduit le délai avant exploitation opportuniste.",
     "impact": "Élevé",
     "source": "The Hacker News",
-    "time": "Defender · 21 mai",
-    "url": "https://thehackernews.com/2026/05/microsoft-warns-of-two-actively.html"
+    "time": "Linux · 19 mai",
+    "url": "https://thehackernews.com/2026/05/dirtydecrypt-poc-released-for-linux.html"
+  },
+  {
+    "cat": "Système",
+    "title": "Copy Fail : Ubuntu publie les correctifs CVE-2026-31431",
+    "summary": "Canonical explique la faille Copy Fail dans le module kernel algif_aead. Action simple : vérifier les noyaux Ubuntu concernés, appliquer les mises à jour et redémarrer les machines exposées.",
+    "impact": "Élevé",
+    "source": "Ubuntu",
+    "time": "Kernel · 30 avr.",
+    "url": "https://ubuntu.com/blog/copy-fail-vulnerability-fixes-available"
   },
   {
     "cat": "Sécurité",
-    "title": "MDASH : Microsoft utilise l’IA pour trouver des failles Windows",
-    "summary": "The Hacker News indique que le système MDASH de Microsoft a identifié 16 failles corrigées au Patch Tuesday. Point de veille : les mêmes méthodes IA qui aident la défense vont aussi accélérer la recherche offensive.",
-    "impact": "Moyen",
-    "source": "The Hacker News",
+    "title": "Red Hat : avis CERT-FR noyau Linux du 22 mai",
+    "summary": "L’avis CERTFR-2026-AVI-0640 regroupe plusieurs bulletins RHSA liés au noyau. C’est un bon rappel de méthode : inventaire, priorité selon exposition, fenêtre de maintenance et vérification post-redémarrage.",
+    "impact": "Élevé",
+    "source": "Red Hat",
+    "time": "Red Hat · 20 mai",
+    "url": "https://access.redhat.com/errata/RHSA-2026:19521"
+  },
+  {
+    "cat": "Sécurité",
+    "title": "Defender : versions de plateforme à contrôler",
+    "summary": "BleepingComputer indique que les correctifs Defender couvrent les branches antimalware concernées par les deux failles exploitées. À vérifier surtout sur postes peu connectés, serveurs et images de référence.",
+    "impact": "Élevé",
+    "source": "BleepingComputer",
     "time": "Windows · 21 mai",
-    "url": "https://thehackernews.com/2026/05/microsofts-mdash-ai-system-finds-16.html"
-  },
-  {
-    "cat": "Sécurité",
-    "title": "Azure Linux : avis CERT-FR à vérifier",
-    "summary": "Le CERT-FR publie un avis sur plusieurs vulnérabilités dans Microsoft Azure Linux. Action simple : croiser l’inventaire des images/VM concernées avec les bulletins éditeur et planifier les correctifs.",
-    "impact": "Élevé",
-    "source": "CERT-FR",
-    "time": "Azure Linux · 21 mai",
-    "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0558/"
-  },
-  {
-    "cat": "Réseau",
-    "title": "Cisco Catalyst SD-WAN : rappel d’actualité CERT-FR",
-    "summary": "Le bulletin CERTFR-2026-ACT-022 revient sur CVE-2026-20182 affectant Catalyst SD-WAN. À contrôler : exposition des équipements, versions déployées, accès d’administration et présence de correctifs.",
-    "impact": "Élevé",
-    "source": "CERT-FR",
-    "time": "Réseau · 21 mai",
-    "url": "https://www.cert.ssi.gouv.fr/actualite/CERTFR-2026-ACT-022/"
+    "url": "https://www.bleepingcomputer.com/news/security/microsoft-warns-of-new-defender-zero-days-exploited-in-attacks/"
   },
   {
     "cat": "Cloud",
-    "title": "Kubernetes v1.36 durcit les bases de sécurité",
-    "summary": "InfoQ résume Kubernetes v1.36 : User Namespaces en GA, Mutating Admission Policies et autorisation fine du kubelet. Pour les admins plateforme : tester les politiques avant upgrade et revoir les contrôles d’accès.",
+    "title": "Cloudflare sécurise les identités non humaines",
+    "summary": "Cloudflare met en avant la révocation automatique, la visibilité OAuth et des permissions mieux bornées pour agents, scripts et outils tiers. Sujet clé avec la multiplication des agents IA en entreprise.",
+    "impact": "Moyen",
+    "source": "Cloudflare",
+    "time": "Agents · avr.",
+    "url": "https://blog.cloudflare.com/improved-developer-security/"
+  },
+  {
+    "cat": "Cloud",
+    "title": "Kubernetes v1.36 : sécurité par défaut et workloads IA",
+    "summary": "InfoQ résume Kubernetes 1.36 avec des évolutions sécurité et plateforme : User Namespaces, politiques d’admission et meilleure gestion de certains scénarios IA. À tester en lab avant tout upgrade.",
     "impact": "Moyen",
     "source": "InfoQ",
-    "time": "Kubernetes · mai",
+    "time": "Kubernetes · 14 mai",
     "url": "https://www.infoq.com/news/2026/05/kubernetes-1-36-released/"
   },
   {
     "cat": "IA",
-    "title": "Benchmarker des agents IA sur Kubernetes",
-    "summary": "InfoQ décrit des pratiques de benchmark pour agents IA exécutés sur Kubernetes. À suivre pour comprendre ressources GPU/CPU, observabilité, isolation et coûts quand les agents deviennent des workloads cloud.",
-    "impact": "Moyen",
-    "source": "InfoQ",
-    "time": "Agents · mai",
-    "url": "https://www.infoq.com/news/2026/05/ai-agents-kubernetes-rag/"
-  },
-  {
-    "cat": "IA",
-    "title": "Anthropic rachète Stainless, outil utilisé par OpenAI, Google et Cloudflare",
-    "summary": "TechCrunch rapporte l’acquisition de Stainless par Anthropic. Le point important : les fournisseurs IA investissent dans les briques développeurs et API, pas seulement dans les modèles.",
-    "impact": "Moyen",
-    "source": "TechCrunch",
-    "time": "Anthropic · 18 mai",
-    "url": "https://techcrunch.com/2026/05/18/anthropic-has-acquired-the-dev-tools-startup-used-by-openai-google-and-cloudflare/"
-  },
-  {
-    "cat": "IA",
-    "title": "Google I/O 2026 : 100 annonces à trier",
-    "summary": "Google publie une synthèse des annonces I/O : Gemini Omni, Antigravity, Universal Cart et outils IA. À garder : distinguer les annonces produit utiles des effets d’annonce, surtout pour cloud, Android et dev tools.",
+    "title": "Google I/O : Antigravity, Gemini API et AI Studio",
+    "summary": "Le blog Google liste les nouveautés développeurs I/O 2026 : Antigravity, Gemini API, Android dans AI Studio et outils pour passer du prototype à l’app. À suivre pour dev, cloud et automatisation.",
     "impact": "Moyen",
     "source": "Google Blog",
-    "time": "I/O · 20 mai",
-    "url": "https://blog.google/innovation-and-ai/technology/ai/google-io-2026-all-our-announcements/"
+    "time": "I/O · mai",
+    "url": "https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/"
+  },
+  {
+    "cat": "IA",
+    "title": "Agents de code : la sécurité devient un sujet de formation",
+    "summary": "GitHub propose un Secure Code Game orienté agents IA. Intéressant pour apprendre les risques concrets : prompt injection, secrets, exécution d’outils et limites des environnements automatisés.",
+    "impact": "Moyen",
+    "source": "GitHub Blog",
+    "time": "Agentic AI · avr.",
+    "url": "https://github.blog/security/hack-the-ai-agent-build-agentic-ai-security-skills-with-the-github-secure-code-game/"
   },
   {
     "cat": "Système",
-    "title": "RHEL 10.2 : Phoronix pointe l’assistance IA en CLI",
-    "summary": "Phoronix met l’accent sur la nouvelle assistance en ligne de commande de RHEL 10.2. À observer côté entreprise : quelles commandes sont suggérées, quelles données sortent du poste et comment encadrer l’usage.",
+    "title": "RHEL 10.2 et 9.8 : l’IA arrive dans l’exploitation Linux",
+    "summary": "Red Hat Developer présente les nouveautés RHEL 10.2 et 9.8, dont des outils orientés assistance. Pour un parcours sys/réseau-cloud, c’est un signal à suivre sur l’administration Linux d’entreprise.",
     "impact": "Moyen",
-    "source": "Phoronix",
+    "source": "Red Hat Developer",
     "time": "RHEL · 20 mai",
-    "url": "https://www.phoronix.com/news/Red-Hat-RHEL-10.2-RHEL-9.8"
+    "url": "https://developers.redhat.com/articles/2026/05/20/rhel-10-2-and-9-8-top-features-developers"
   },
   {
     "cat": "Open Source",
-    "title": "OpenSSF : se préparer au Cyber Resilience Act",
-    "summary": "DevOps.com relaie l’alerte d’OpenSSF : l’écosystème open source doit accélérer sur SBOM, gestion des vulnérabilités et preuves de conformité avant les échéances européennes du CRA.",
+    "title": "OpenSSF : la conformité CRA se rapproche",
+    "summary": "DevOps.com relaie l’alerte d’OpenSSF sur le Cyber Resilience Act européen. Les projets open source doivent mieux documenter SBOM, vulnérabilités et processus de correction.",
     "impact": "Moyen",
     "source": "DevOps.com",
     "time": "CRA · 20 mai",
@@ -864,57 +864,57 @@ const VEILLE_DATA = [
 const RECO_DATA = [
   {
     "type": "Lecture",
-    "icon": "🛡️",
-    "title": "Defender zero-days — The Hacker News",
-    "desc": "Résumé clair des deux failles Defender exploitées et des correctifs Microsoft.",
-    "why": "À lire pour prioriser les postes Windows et comprendre le risque SYSTEM/DoS.",
-    "meta": "Cyber · Windows",
-    "url": "https://thehackernews.com/2026/05/microsoft-warns-of-two-actively.html"
+    "icon": "🐧",
+    "title": "Fragnesia / Dirty Frag — BleepingComputer",
+    "desc": "Article utile pour comprendre la nouvelle alerte d’élévation root côté noyau Linux.",
+    "why": "Prioritaire si tu veux suivre les risques Linux, containers et serveurs non patchés.",
+    "meta": "Linux · sécurité",
+    "url": "https://www.bleepingcomputer.com/news/security/new-fragnesia-linux-flaw-lets-attackers-gain-root-privileges/"
   },
   {
     "type": "Lecture",
-    "icon": "📦",
-    "title": "Mini Shai Hulud — Microsoft Security",
-    "desc": "Analyse de packages npm compromis visant les secrets CI/CD.",
-    "why": "Très utile pour relier supply chain, npm, CI/CD et rotation de secrets.",
-    "meta": "DevSecOps · npm",
-    "url": "https://www.microsoft.com/en-us/security/blog/2026/05/20/mini-shai-hulud-compromised-antv-npm-packages-enable-ci-cd-credential-theft/"
+    "icon": "🛡️",
+    "title": "CERT-FR AVI-0640 — noyau Red Hat",
+    "desc": "Avis officiel français sur les vulnérabilités noyau Red Hat publiées le 22 mai.",
+    "why": "Bon réflexe pour apprendre à lire un bulletin de sécurité et préparer un patching serveur.",
+    "meta": "CERT-FR · Red Hat",
+    "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0640/"
+  },
+  {
+    "type": "Lecture",
+    "icon": "🤖",
+    "title": "Code with Claude — InfoQ",
+    "desc": "Synthèse des annonces Anthropic autour de Claude Code, agents gérés et workflows proactifs.",
+    "why": "À lire pour comprendre où vont les outils de développement assistés par IA.",
+    "meta": "IA · dev tools",
+    "url": "https://www.infoq.com/news/2026/05/code-with-claude/"
+  },
+  {
+    "type": "Lecture",
+    "icon": "🔐",
+    "title": "Cloudflare — identités non humaines",
+    "desc": "Explication claire des risques OAuth, tokens et permissions pour agents/scripts.",
+    "why": "Très pertinent avec l’usage croissant des agents IA et des automatisations cloud.",
+    "meta": "Cloud · IAM",
+    "url": "https://blog.cloudflare.com/improved-developer-security/"
   },
   {
     "type": "Lecture",
     "icon": "☁️",
     "title": "Kubernetes v1.36 — InfoQ",
-    "desc": "Synthèse des nouveautés sécurité, API et support des workloads IA.",
-    "why": "Bonne base pour suivre les évolutions cloud-native importantes pour admin sys/cloud.",
+    "desc": "Vue d’ensemble des nouveautés sécurité et cloud-native de Kubernetes 1.36.",
+    "why": "Bonne base pour rester à jour côté cloud, containers et plateforme.",
     "meta": "Kubernetes · cloud",
     "url": "https://www.infoq.com/news/2026/05/kubernetes-1-36-released/"
   },
   {
-    "type": "Outil",
-    "icon": "🔎",
-    "title": "Cloudflare AI Security for Apps",
-    "desc": "Découverte d’endpoints IA et protections pour applications utilisant des modèles.",
-    "why": "Intéressant pour comprendre la sécurité des applications IA exposées.",
-    "meta": "Cloud · sécurité IA",
-    "url": "https://blog.cloudflare.com/ai-security-for-apps-ga/"
-  },
-  {
-    "type": "Lecture",
-    "icon": "🐧",
-    "title": "RHEL 10.2 et 9.8",
-    "desc": "Présentation Red Hat des nouveautés Enterprise Linux, IA en CLI et Image Mode.",
-    "why": "À suivre si tu vises système, réseau et cloud en environnement entreprise.",
-    "meta": "Linux · entreprise",
-    "url": "https://www.redhat.com/en/blog/rhel-102-and-98-intelligent-evolution-enterprise-linux"
-  },
-  {
-    "type": "Lecture",
-    "icon": "🤖",
-    "title": "OpenAI Symphony — InfoQ",
-    "desc": "Présentation d’une orchestration d’agents de code autour de SPEC.md.",
-    "why": "Utile pour comprendre comment structurer les agents IA sans perdre le contrôle projet.",
-    "meta": "IA · dev tools",
-    "url": "https://www.infoq.com/news/2026/05/openai-symphony-agents/"
+    "type": "Article",
+    "icon": "📱",
+    "title": "Codex mobile — TechCrunch",
+    "desc": "Présentation de Codex pilotable depuis l’application mobile ChatGPT.",
+    "why": "Montre comment les workflows de développement deviennent continus et multi-appareils.",
+    "meta": "OpenAI · dev",
+    "url": "https://techcrunch.com/2026/05/14/openai-says-codex-is-coming-to-your-phone/"
   }
 ];
 
