@@ -710,14 +710,22 @@ function scrollTo(hash){document.querySelector(hash)?.scrollIntoView({behavior:'
 // ── DONNÉES SOURCÉES ──
 const ACTU_DATA = {
   "ticker": [
+    "Underminr : 88 millions de domaines pourraient masquer du trafic C2",
     "Claude Mythos : Anthropic revendique 10 000 failles graves trouvées par IA",
     "Packagist : 8 paquets compromis livrent un malware Linux hébergé sur GitHub",
     "Linux : Dirty Frag, Copy Fail et Fragnesia interrogent le rythme des correctifs",
     "Alan alerte ses clients après une fuite chez le prestataire Almerys",
-    "Gemini arrive dans Gmail pour les abonnés Google AI Plus et Pro",
     "Smartphones : Apple, Meta et Google renforcent les modes anti-spyware"
   ],
   "news": [
+    {
+      "cat": "Sécurité",
+      "title": "Underminr brouille les défenses DNS",
+      "summary": "SecurityWeek rapporte qu’Underminr touche environ 88 millions de domaines et peut permettre de cacher des connexions malveillantes derrière des domaines de confiance. Le sujet compte pour les équipes réseau : filtrage DNS, proxy et détection C2 peuvent perdre en lisibilité.",
+      "impact": "Élevé",
+      "time": "SecurityWeek · 23 mai",
+      "url": "https://www.securityweek.com/underminr-vulnerability-lets-attackers-hide-malicious-connections-behind-trusted-domains/"
+    },
     {
       "cat": "IA",
       "title": "Claude Mythos accélère la chasse aux failles",
@@ -751,14 +759,6 @@ const ACTU_DATA = {
       "url": "https://next.ink/238995/alan-alerte-sur-une-fuite-de-donnees-chez-almerys-son-prestataire-de-tiers-payant/"
     },
     {
-      "cat": "IA",
-      "title": "Gemini s’installe dans Gmail",
-      "summary": "Clubic rapporte l’arrivée de Gemini dans Gmail pour les abonnés Google AI Plus et Pro. La productivité mail devient un nouveau terrain de concurrence IA, avec des enjeux de confidentialité et de dépendance aux suites cloud.",
-      "impact": "Moyen",
-      "time": "Clubic · 23 mai",
-      "url": "https://www.clubic.com/actualite-613954-gemini-s-invite-dans-gmail-pour-les-abonnes-ai-plus-et-pro.html"
-    },
-    {
       "cat": "Sécurité",
       "title": "Spyware mobile : les modes renforcés à connaître",
       "summary": "TechCrunch fait le point sur les protections spéciales proposées par Apple, Meta et Google contre les attaques par spyware ciblé. Utile pour les profils exposés : journalistes, responsables associatifs, dirigeants ou personnels sensibles.",
@@ -772,7 +772,7 @@ const ACTU_DATA = {
 const VEILLE_DATA = [
   {
     "cat": "DevOps",
-    "title": "npm impose mieux 2FA et contrôles d’installation",
+    "title": "npm renforce publication 2FA et installation",
     "summary": "The Hacker News détaille de nouveaux garde-fous npm : publication conditionnée à la 2FA et contrôles d’installation de paquets. À activer côté projets Node pour réduire le risque de prise de contrôle de dépendances.",
     "impact": "Élevé",
     "source": "The Hacker News",
@@ -781,84 +781,84 @@ const VEILLE_DATA = [
   },
   {
     "cat": "Sécurité",
-    "title": "LiteSpeed cPanel : CVE-2026-48172 exploitée en root",
-    "summary": "The Hacker News signale l’exploitation de CVE-2026-48172 dans le plugin LiteSpeed pour cPanel, permettant l’exécution de scripts avec privilèges root. À vérifier vite sur hébergements mutualisés et serveurs WHM/cPanel.",
+    "title": "Apex One : CVE-2026-34926 exploitée",
+    "summary": "TrendAI confirme au moins une tentative d’exploitation de CVE-2026-34926 sur Apex One on-premise. À faire : vérifier les builds, appliquer le correctif disponible et surveiller les serveurs de gestion endpoint.",
+    "impact": "Élevé",
+    "source": "TrendAI",
+    "time": "Apex One · 21 mai",
+    "url": "https://success.trendmicro.com/en-US/solution/KA-0023430"
+  },
+  {
+    "cat": "Réseau",
+    "title": "UniFi OS : trois failles critiques à corriger",
+    "summary": "BleepingComputer signale trois vulnérabilités de sévérité maximale dans UniFi OS, exploitables à distance sans privilèges selon l’alerte publiée autour du correctif. Les consoles et serveurs UniFi doivent passer sur les versions corrigées.",
+    "impact": "Élevé",
+    "source": "BleepingComputer",
+    "time": "Ubiquiti · 22 mai",
+    "url": "https://www.bleepingcomputer.com/news/security/ubiquiti-patches-three-max-severity-unifi-os-vulnerabilities/"
+  },
+  {
+    "cat": "Sécurité",
+    "title": "Drupal Core : injection SQL déjà dans le KEV",
+    "summary": "CISA a ajouté CVE-2026-9082, une injection SQL Drupal Core, au catalogue KEV après exploitation active. Action : appliquer les versions Drupal corrigées, vérifier les modules exposés et contrôler les journaux web.",
+    "impact": "Élevé",
+    "source": "CISA / Drupal",
+    "time": "Drupal · 23 mai",
+    "url": "https://www.drupal.org/sa-core-2026-004"
+  },
+  {
+    "cat": "Sécurité",
+    "title": "LiteSpeed cPanel : CVE-2026-48172 en root",
+    "summary": "The Hacker News signale l’exploitation de CVE-2026-48172 dans le plugin LiteSpeed pour cPanel, permettant l’exécution de scripts avec privilèges root. À vérifier vite sur hébergements WHM/cPanel et mutualisés.",
     "impact": "Élevé",
     "source": "The Hacker News",
     "time": "cPanel · 23 mai",
     "url": "https://thehackernews.com/2026/05/litespeed-cpanel-plugin-cve-2026-48172.html"
   },
   {
-    "cat": "Sécurité",
-    "title": "Drupal Core : injection SQL déjà dans le KEV CISA",
-    "summary": "The Hacker News rapporte que CVE-2026-9082, une injection SQL dans Drupal Core, est ajoutée au catalogue CISA KEV après exploitation active. Action : appliquer les versions Drupal corrigées et contrôler les journaux web.",
-    "impact": "Élevé",
-    "source": "The Hacker News",
-    "time": "Drupal · 23 mai",
-    "url": "https://thehackernews.com/2026/05/drupal-core-sql-injection-bug-actively.html"
-  },
-  {
-    "cat": "Dev",
-    "title": "Laravel-Lang : paquets PHP compromis",
-    "summary": "The Hacker News décrit des paquets Laravel-Lang compromis pour livrer un voleur d’identifiants multi-plateforme. À faire : auditer composer.lock, purger caches CI/CD et faire tourner les secrets exposés.",
-    "impact": "Élevé",
-    "source": "The Hacker News",
-    "time": "PHP · 23 mai",
-    "url": "https://thehackernews.com/2026/05/laravel-lang-php-packages-compromised.html"
-  },
-  {
-    "cat": "Sécurité",
-    "title": "Defender : versions de plateforme à contrôler",
-    "summary": "BleepingComputer indique que les correctifs Defender couvrent les branches antimalware concernées par deux failles exploitées. À vérifier surtout sur postes peu connectés, serveurs et images de référence.",
-    "impact": "Élevé",
-    "source": "BleepingComputer",
-    "time": "Windows · 21 mai",
-    "url": "https://www.bleepingcomputer.com/news/security/microsoft-warns-of-new-defender-zero-days-exploited-in-attacks/"
-  },
-  {
-    "cat": "Sécurité",
+    "cat": "Linux",
     "title": "Red Hat : avis CERT-FR noyau Linux du 22 mai",
-    "summary": "L’avis CERTFR-2026-AVI-0640 regroupe plusieurs bulletins RHSA liés au noyau. Bon réflexe admin : inventaire, priorité selon exposition, fenêtre de maintenance et vérification post-redémarrage.",
+    "summary": "L’avis CERTFR-2026-AVI-0640 regroupe plusieurs bulletins RHSA liés au noyau Linux de Red Hat. Bon réflexe admin : inventaire, priorité selon exposition, fenêtre de maintenance et vérification post-redémarrage.",
     "impact": "Élevé",
     "source": "CERT-FR",
     "time": "Red Hat · 22 mai",
     "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0640/"
   },
   {
-    "cat": "Cloud",
-    "title": "Cloudflare sécurise les identités non humaines",
-    "summary": "Cloudflare met en avant la révocation automatique, la visibilité OAuth et des permissions mieux bornées pour agents, scripts et outils tiers. Sujet clé avec la multiplication des agents IA en entreprise.",
+    "cat": "IA",
+    "title": "Agents IA : les “skills” deviennent surface d’attaque",
+    "summary": "The Register relaie des travaux montrant que de petites modifications dans les instructions textuelles des skills peuvent détourner des agents IA. À retenir pour les équipes : signer, relire et isoler les compétences importées.",
     "impact": "Moyen",
-    "source": "Cloudflare",
-    "time": "Agents · avr.",
-    "url": "https://blog.cloudflare.com/improved-developer-security/"
+    "source": "The Register",
+    "time": "Agents IA · 22 mai",
+    "url": "https://www.theregister.com/ai-ml/2026/05/22/minor-edits-to-ai-skills-can-make-agents-go-rogue/5245413"
   },
   {
     "cat": "Cloud",
-    "title": "Kubernetes v1.36 : sécurité par défaut et workloads IA",
-    "summary": "InfoQ résume Kubernetes 1.36 avec des évolutions sécurité et plateforme : User Namespaces, politiques d’admission et meilleure gestion de certains scénarios IA. À tester en lab avant tout upgrade.",
+    "title": "Clés API Google : délai résiduel après suppression",
+    "summary": "Dark Reading rapporte qu’un chercheur a observé des clés API Google encore utilisables plusieurs minutes après suppression. Pour l’IAM cloud, cela rappelle l’intérêt de réduire les privilèges, journaliser et révoquer par couches.",
+    "impact": "Moyen",
+    "source": "Dark Reading",
+    "time": "IAM · 21 mai",
+    "url": "https://www.darkreading.com/identity-access-management-security/google-api-keys-active-after-deletion"
+  },
+  {
+    "cat": "Cloud",
+    "title": "BigQuery ouvre davantage Apache Iceberg",
+    "summary": "InfoQ résume les annonces Google Cloud autour du support cross-engine Iceberg dans BigQuery, dont un catalogue REST serverless en préversion. À suivre pour les architectures data lakehouse et l’interopérabilité entre moteurs.",
     "impact": "Moyen",
     "source": "InfoQ",
-    "time": "Kubernetes · 14 mai",
-    "url": "https://www.infoq.com/news/2026/05/kubernetes-1-36-released/"
+    "time": "Google Cloud · 23 mai",
+    "url": "https://www.infoq.com/news/2026/05/google-cross-engine-iceberg/"
   },
   {
-    "cat": "IA",
-    "title": "Agents de code : s’entraîner aux risques concrets",
-    "summary": "GitHub propose un Secure Code Game orienté agents IA. Intéressant pour apprendre les risques pratiques : prompt injection, secrets, exécution d’outils et limites des environnements automatisés.",
+    "cat": "Cloud",
+    "title": "Cloudflare CASB ajoute le suivi Claude",
+    "summary": "Cloudflare annonce le support de l’API de conformité Claude dans son CASB. Le point utile : mieux inventorier les usages Anthropic, contrôler les flux IA et encadrer les agents dans les environnements SaaS.",
     "impact": "Moyen",
-    "source": "GitHub Blog",
-    "time": "Agentic AI · avr.",
-    "url": "https://github.blog/security/hack-the-ai-agent-build-agentic-ai-security-skills-with-the-github-secure-code-game/"
-  },
-  {
-    "cat": "Open Source",
-    "title": "OpenSSF : la conformité CRA se rapproche",
-    "summary": "DevOps.com relaie l’alerte d’OpenSSF sur le Cyber Resilience Act européen. Les projets open source doivent mieux documenter SBOM, vulnérabilités et processus de correction.",
-    "impact": "Moyen",
-    "source": "DevOps.com",
-    "time": "CRA · 20 mai",
-    "url": "https://devops.com/openssfs-crob-the-runway-is-rapidly-running-out-on-eu-cra-readiness/"
+    "source": "Cloudflare",
+    "time": "Claude · 21 mai",
+    "url": "https://blog.cloudflare.com/casb-anthropic-integration/"
   }
 ];
 const RECO_DATA = [
