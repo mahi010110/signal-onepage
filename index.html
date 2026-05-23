@@ -710,101 +710,119 @@ function scrollTo(hash){document.querySelector(hash)?.scrollIntoView({behavior:'
 // ── DONNÉES SOURCÉES ──
 const ACTU_DATA = {
   "ticker": [
-    "Fragnesia/Dirty Frag : nouvelle alerte root sur noyau Linux",
-    "Azure : une faille critique corrigée sans CVE public inquiète les défenseurs",
-    "Microsoft Defender : deux vulnérabilités déjà exploitées à corriger vite",
-    "Claude Code met en avant agents gérés et workflows proactifs",
-    "Google I/O 2026 renforce Gemini, Antigravity et AI Studio côté dev",
-    "CERT-FR publie un avis noyau Linux Red Hat du 22 mai"
+    "Claude Mythos : Anthropic revendique 10 000 failles graves trouvées par IA",
+    "Packagist : 8 paquets compromis livrent un malware Linux hébergé sur GitHub",
+    "Linux : Dirty Frag, Copy Fail et Fragnesia interrogent le rythme des correctifs",
+    "Alan alerte ses clients après une fuite chez le prestataire Almerys",
+    "Gemini arrive dans Gmail pour les abonnés Google AI Plus et Pro",
+    "Smartphones : Apple, Meta et Google renforcent les modes anti-spyware"
   ],
   "news": [
     {
-      "cat": "Sécurité",
-      "title": "Linux : Fragnesia permettrait une élévation root",
-      "summary": "BleepingComputer signale Fragnesia, une nouvelle faille de la famille Dirty Frag affectant les noyaux Linux antérieurs au 13 mai 2026. Le signal est clair : surveiller les correctifs kernel et éviter de laisser des hôtes/containers non patchés.",
-      "impact": "Élevé",
-      "time": "BleepingComputer · 23 mai",
-      "url": "https://www.bleepingcomputer.com/news/security/new-fragnesia-linux-flaw-lets-attackers-gain-root-privileges/"
-    },
-    {
-      "cat": "Cloud",
-      "title": "Azure : faille critique corrigée sans CVE public",
-      "summary": "BleepingComputer rapporte qu’un chercheur a décrit une élévation de privilèges liée au rôle Backup Contributor Azure, corrigée sans avis ni CVE public. À retenir : vérifier les rôles sensibles, les journaux et les délégations historiques.",
-      "impact": "Élevé",
-      "time": "BleepingComputer · 20 mai",
-      "url": "https://www.bleepingcomputer.com/news/security/microsoft-rejects-critical-azure-vulnerability-report-no-cve-issued/"
-    },
-    {
-      "cat": "Sécurité",
-      "title": "Microsoft Defender : deux failles exploitées",
-      "summary": "The Hacker News confirme l’exploitation active de CVE-2026-41091 et CVE-2026-45498 dans Defender. Priorité : contrôler la version de la plateforme antimalware et accélérer la mise à jour des postes Windows.",
-      "impact": "Élevé",
-      "time": "The Hacker News · 21 mai",
-      "url": "https://thehackernews.com/2026/05/microsoft-warns-of-two-actively.html"
-    },
-    {
       "cat": "IA",
-      "title": "Claude Code pousse les agents gérés",
-      "summary": "InfoQ résume Code with Claude 2026 : agents gérés, workflows proactifs et automatisation plus profonde du développement. Pour les équipes, l’enjeu devient la validation, la traçabilité et le contrôle humain des changements.",
-      "impact": "Moyen",
-      "time": "InfoQ · 18 mai",
-      "url": "https://www.infoq.com/news/2026/05/code-with-claude/"
+      "title": "Claude Mythos accélère la chasse aux failles",
+      "summary": "The Hacker News rapporte qu’Anthropic attribue à Claude Mythos la découverte de plus de 10 000 vulnérabilités sévères dans des logiciels utilisés à grande échelle. L’IA devient un accélérateur de détection, mais aussi un défi pour prioriser et corriger.",
+      "impact": "Élevé",
+      "time": "The Hacker News · 23 mai",
+      "url": "https://thehackernews.com/2026/05/claude-mythos-ai-finds-10000-high.html"
     },
     {
       "cat": "Dev",
-      "title": "OpenAI Codex arrive dans l’app mobile ChatGPT",
-      "summary": "TechCrunch indique que Codex peut être suivi et piloté depuis mobile : revue de sorties, approbation de commandes et lancement de tâches. Le développement assisté devient plus continu, mais demande encore des garde-fous.",
-      "impact": "Moyen",
-      "time": "TechCrunch · 14 mai",
-      "url": "https://techcrunch.com/2026/05/14/openai-says-codex-is-coming-to-your-phone/"
+      "title": "Packagist : 8 paquets infectés par malware Linux",
+      "summary": "The Hacker News signale une attaque supply chain visant Packagist : huit paquets PHP auraient servi à distribuer un malware Linux hébergé sur GitHub. Le signal est fort pour les équipes qui consomment des dépendances Composer.",
+      "impact": "Élevé",
+      "time": "The Hacker News · 23 mai",
+      "url": "https://thehackernews.com/2026/05/packagist-supply-chain-attack-infects-8.html"
     },
     {
       "cat": "Système",
-      "title": "CERT-FR : nouvelles vulnérabilités noyau Red Hat",
-      "summary": "Le CERT-FR publie l’avis CERTFR-2026-AVI-0640 sur plusieurs vulnérabilités du noyau Linux Red Hat. À faire : croiser les RHSA concernés avec l’inventaire serveurs et planifier les redémarrages nécessaires.",
+      "title": "Linux : une série de failles root inquiète",
+      "summary": "The Register met en perspective Dirty Frag, Copy Fail et Fragnesia, trois alertes récentes d’élévation de privilèges Linux. Important : le sujet dépasse une CVE isolée et pose la question du patching rapide des noyaux en production.",
       "impact": "Élevé",
-      "time": "CERT-FR · 22 mai",
-      "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0640/"
+      "time": "The Register · 23 mai",
+      "url": "https://www.theregister.com/security/2026/05/23/dirty-frag-copy-fail-fragnesia-the-start-of-a-worrisome-linux-security-trend/5244742"
+    },
+    {
+      "cat": "Sécurité",
+      "title": "Alan prévient d’une fuite chez Almerys",
+      "summary": "Next.ink indique qu’Alan a alerté les adhérents de ses entreprises clientes après une fuite de données chez Almerys, prestataire de tiers-payant. C’est un rappel concret du risque fournisseur dans les chaînes de services santé.",
+      "impact": "Moyen",
+      "time": "Next.ink · 23 mai",
+      "url": "https://next.ink/238995/alan-alerte-sur-une-fuite-de-donnees-chez-almerys-son-prestataire-de-tiers-payant/"
+    },
+    {
+      "cat": "IA",
+      "title": "Gemini s’installe dans Gmail",
+      "summary": "Clubic rapporte l’arrivée de Gemini dans Gmail pour les abonnés Google AI Plus et Pro. La productivité mail devient un nouveau terrain de concurrence IA, avec des enjeux de confidentialité et de dépendance aux suites cloud.",
+      "impact": "Moyen",
+      "time": "Clubic · 23 mai",
+      "url": "https://www.clubic.com/actualite-613954-gemini-s-invite-dans-gmail-pour-les-abonnes-ai-plus-et-pro.html"
+    },
+    {
+      "cat": "Sécurité",
+      "title": "Spyware mobile : les modes renforcés à connaître",
+      "summary": "TechCrunch fait le point sur les protections spéciales proposées par Apple, Meta et Google contre les attaques par spyware ciblé. Utile pour les profils exposés : journalistes, responsables associatifs, dirigeants ou personnels sensibles.",
+      "impact": "Moyen",
+      "time": "TechCrunch · 23 mai",
+      "url": "https://techcrunch.com/2026/05/23/you-dont-have-to-click-anything-to-get-hacked-anymore-heres-how-to-fight-back/"
     }
   ]
 };
 
 const VEILLE_DATA = [
   {
-    "cat": "Sécurité",
-    "title": "DirtyDecrypt : un PoC public pour CVE-2026-31635",
-    "summary": "The Hacker News détaille la publication d’un exploit PoC pour une faille noyau Linux de type élévation locale de privilèges. Important pour les admins : un PoC public réduit le délai avant exploitation opportuniste.",
+    "cat": "DevOps",
+    "title": "npm impose mieux 2FA et contrôles d’installation",
+    "summary": "The Hacker News détaille de nouveaux garde-fous npm : publication conditionnée à la 2FA et contrôles d’installation de paquets. À activer côté projets Node pour réduire le risque de prise de contrôle de dépendances.",
     "impact": "Élevé",
     "source": "The Hacker News",
-    "time": "Linux · 19 mai",
-    "url": "https://thehackernews.com/2026/05/dirtydecrypt-poc-released-for-linux.html"
-  },
-  {
-    "cat": "Système",
-    "title": "Copy Fail : Ubuntu publie les correctifs CVE-2026-31431",
-    "summary": "Canonical explique la faille Copy Fail dans le module kernel algif_aead. Action simple : vérifier les noyaux Ubuntu concernés, appliquer les mises à jour et redémarrer les machines exposées.",
-    "impact": "Élevé",
-    "source": "Ubuntu",
-    "time": "Kernel · 30 avr.",
-    "url": "https://ubuntu.com/blog/copy-fail-vulnerability-fixes-available"
+    "time": "npm · 23 mai",
+    "url": "https://thehackernews.com/2026/05/npm-adds-2fa-gated-publishing-and.html"
   },
   {
     "cat": "Sécurité",
-    "title": "Red Hat : avis CERT-FR noyau Linux du 22 mai",
-    "summary": "L’avis CERTFR-2026-AVI-0640 regroupe plusieurs bulletins RHSA liés au noyau. C’est un bon rappel de méthode : inventaire, priorité selon exposition, fenêtre de maintenance et vérification post-redémarrage.",
+    "title": "LiteSpeed cPanel : CVE-2026-48172 exploitée en root",
+    "summary": "The Hacker News signale l’exploitation de CVE-2026-48172 dans le plugin LiteSpeed pour cPanel, permettant l’exécution de scripts avec privilèges root. À vérifier vite sur hébergements mutualisés et serveurs WHM/cPanel.",
     "impact": "Élevé",
-    "source": "Red Hat",
-    "time": "Red Hat · 20 mai",
-    "url": "https://access.redhat.com/errata/RHSA-2026:19521"
+    "source": "The Hacker News",
+    "time": "cPanel · 23 mai",
+    "url": "https://thehackernews.com/2026/05/litespeed-cpanel-plugin-cve-2026-48172.html"
+  },
+  {
+    "cat": "Sécurité",
+    "title": "Drupal Core : injection SQL déjà dans le KEV CISA",
+    "summary": "The Hacker News rapporte que CVE-2026-9082, une injection SQL dans Drupal Core, est ajoutée au catalogue CISA KEV après exploitation active. Action : appliquer les versions Drupal corrigées et contrôler les journaux web.",
+    "impact": "Élevé",
+    "source": "The Hacker News",
+    "time": "Drupal · 23 mai",
+    "url": "https://thehackernews.com/2026/05/drupal-core-sql-injection-bug-actively.html"
+  },
+  {
+    "cat": "Dev",
+    "title": "Laravel-Lang : paquets PHP compromis",
+    "summary": "The Hacker News décrit des paquets Laravel-Lang compromis pour livrer un voleur d’identifiants multi-plateforme. À faire : auditer composer.lock, purger caches CI/CD et faire tourner les secrets exposés.",
+    "impact": "Élevé",
+    "source": "The Hacker News",
+    "time": "PHP · 23 mai",
+    "url": "https://thehackernews.com/2026/05/laravel-lang-php-packages-compromised.html"
   },
   {
     "cat": "Sécurité",
     "title": "Defender : versions de plateforme à contrôler",
-    "summary": "BleepingComputer indique que les correctifs Defender couvrent les branches antimalware concernées par les deux failles exploitées. À vérifier surtout sur postes peu connectés, serveurs et images de référence.",
+    "summary": "BleepingComputer indique que les correctifs Defender couvrent les branches antimalware concernées par deux failles exploitées. À vérifier surtout sur postes peu connectés, serveurs et images de référence.",
     "impact": "Élevé",
     "source": "BleepingComputer",
     "time": "Windows · 21 mai",
     "url": "https://www.bleepingcomputer.com/news/security/microsoft-warns-of-new-defender-zero-days-exploited-in-attacks/"
+  },
+  {
+    "cat": "Sécurité",
+    "title": "Red Hat : avis CERT-FR noyau Linux du 22 mai",
+    "summary": "L’avis CERTFR-2026-AVI-0640 regroupe plusieurs bulletins RHSA liés au noyau. Bon réflexe admin : inventaire, priorité selon exposition, fenêtre de maintenance et vérification post-redémarrage.",
+    "impact": "Élevé",
+    "source": "CERT-FR",
+    "time": "Red Hat · 22 mai",
+    "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0640/"
   },
   {
     "cat": "Cloud",
@@ -826,30 +844,12 @@ const VEILLE_DATA = [
   },
   {
     "cat": "IA",
-    "title": "Google I/O : Antigravity, Gemini API et AI Studio",
-    "summary": "Le blog Google liste les nouveautés développeurs I/O 2026 : Antigravity, Gemini API, Android dans AI Studio et outils pour passer du prototype à l’app. À suivre pour dev, cloud et automatisation.",
-    "impact": "Moyen",
-    "source": "Google Blog",
-    "time": "I/O · mai",
-    "url": "https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/"
-  },
-  {
-    "cat": "IA",
-    "title": "Agents de code : la sécurité devient un sujet de formation",
-    "summary": "GitHub propose un Secure Code Game orienté agents IA. Intéressant pour apprendre les risques concrets : prompt injection, secrets, exécution d’outils et limites des environnements automatisés.",
+    "title": "Agents de code : s’entraîner aux risques concrets",
+    "summary": "GitHub propose un Secure Code Game orienté agents IA. Intéressant pour apprendre les risques pratiques : prompt injection, secrets, exécution d’outils et limites des environnements automatisés.",
     "impact": "Moyen",
     "source": "GitHub Blog",
     "time": "Agentic AI · avr.",
     "url": "https://github.blog/security/hack-the-ai-agent-build-agentic-ai-security-skills-with-the-github-secure-code-game/"
-  },
-  {
-    "cat": "Système",
-    "title": "RHEL 10.2 et 9.8 : l’IA arrive dans l’exploitation Linux",
-    "summary": "Red Hat Developer présente les nouveautés RHEL 10.2 et 9.8, dont des outils orientés assistance. Pour un parcours sys/réseau-cloud, c’est un signal à suivre sur l’administration Linux d’entreprise.",
-    "impact": "Moyen",
-    "source": "Red Hat Developer",
-    "time": "RHEL · 20 mai",
-    "url": "https://developers.redhat.com/articles/2026/05/20/rhel-10-2-and-9-8-top-features-developers"
   },
   {
     "cat": "Open Source",
