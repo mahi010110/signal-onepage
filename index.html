@@ -710,14 +710,22 @@ function scrollTo(hash){document.querySelector(hash)?.scrollIntoView({behavior:'
 // ── DONNÉES SOURCÉES ──
 const ACTU_DATA = {
   "ticker": [
+    "HP enquête sur des BIOS qui bloquent des stations mobiles premium",
     "Underminr : 88 millions de domaines pourraient masquer du trafic C2",
     "Claude Mythos : Anthropic revendique 10 000 failles graves trouvées par IA",
     "Fraude Apple : 47 millions de dollars détournés via cartes-cadeaux",
-    "Starship V3 réussit l’essentiel de son premier vol d’essai",
     "Alan alerte ses clients après une fuite chez le prestataire Almerys",
     "Smartphones : Apple, Meta et Google renforcent les modes anti-spyware"
   ],
   "news": [
+    {
+      "cat": "Matériel",
+      "title": "HP enquête sur des BIOS qui bloquent des laptops pro",
+      "summary": "The Register rapporte que des mises à jour BIOS critiques poussées via Windows Update provoquent gels au démarrage, lenteurs, ventilateurs anormaux et BSOD sur des ZBook et EliteBook premium. C’est important pour les parcs IT : un firmware automatique peut immobiliser des postes coûteux.",
+      "impact": "Moyen",
+      "time": "The Register · 24 mai",
+      "url": "https://www.theregister.com/personal-tech/2026/05/24/hp-investigating-bios-updates-that-leave-premium-laptop-users-in-boot-loop-limbo/5244769"
+    },
     {
       "cat": "Sécurité",
       "title": "Underminr brouille les défenses DNS",
@@ -743,14 +751,6 @@ const ACTU_DATA = {
       "url": "https://www.01net.com/actualites/fraude-a-la-carte-cadeau-apple-un-reseau-criminel-chinois-a-detourne-47-millions-de-dollars.html"
     },
     {
-      "cat": "Espace",
-      "title": "Starship V3 réussit un vol encore perfectible",
-      "summary": "Ars Technica rapporte que le premier vol de Starship V3 a été globalement réussi, malgré des progrès encore nécessaires avant l’orbite basse complète. Le programme reste central pour les ambitions lunaires, martiennes et commerciales de SpaceX.",
-      "impact": "Moyen",
-      "time": "Ars Technica · 23 mai",
-      "url": "https://arstechnica.com/space/2026/05/spacexs-starship-v3-still-a-work-in-progress-mostly-successful-on-first-flight/"
-    },
-    {
       "cat": "Sécurité",
       "title": "Alan prévient d’une fuite chez Almerys",
       "summary": "Next.ink indique qu’Alan a alerté les adhérents de ses entreprises clientes après une fuite de données chez Almerys, prestataire de tiers-payant. C’est un rappel concret du risque fournisseur dans les chaînes de services santé.",
@@ -770,6 +770,15 @@ const ACTU_DATA = {
 };
 
 const VEILLE_DATA = [
+  {
+    "cat": "Sécurité",
+    "title": "Ghost CMS : CVE-2026-26980 exploitée à grande échelle",
+    "summary": "BleepingComputer signale une campagne ClickFix qui exploite une injection SQL critique de Ghost CMS pour injecter du JavaScript malveillant. À faire : vérifier les instances Ghost, passer au moins en 6.19.1 et rechercher des scripts ajoutés aux contenus.",
+    "impact": "Élevé",
+    "source": "BleepingComputer",
+    "time": "Ghost CMS · 24 mai",
+    "url": "https://www.bleepingcomputer.com/news/security/ghost-cms-sql-injection-flaw-exploited-in-large-scale-clickfix-campaign/"
+  },
   {
     "cat": "DevOps",
     "title": "npm renforce publication 2FA et installation",
@@ -832,15 +841,6 @@ const VEILLE_DATA = [
     "source": "The Register",
     "time": "Agents IA · 22 mai",
     "url": "https://www.theregister.com/ai-ml/2026/05/22/minor-edits-to-ai-skills-can-make-agents-go-rogue/5245413"
-  },
-  {
-    "cat": "Cloud",
-    "title": "Clés API Google : délai résiduel après suppression",
-    "summary": "Dark Reading rapporte qu’un chercheur a observé des clés API Google encore utilisables plusieurs minutes après suppression. Pour l’IAM cloud, cela rappelle l’intérêt de réduire les privilèges, journaliser et révoquer par couches.",
-    "impact": "Moyen",
-    "source": "Dark Reading",
-    "time": "IAM · 21 mai",
-    "url": "https://www.darkreading.com/identity-access-management-security/google-api-keys-active-after-deletion"
   },
   {
     "cat": "Cloud",
