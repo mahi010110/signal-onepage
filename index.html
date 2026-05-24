@@ -712,8 +712,8 @@ const ACTU_DATA = {
   "ticker": [
     "Underminr : 88 millions de domaines pourraient masquer du trafic C2",
     "Claude Mythos : Anthropic revendique 10 000 failles graves trouvées par IA",
-    "Packagist : 8 paquets compromis livrent un malware Linux hébergé sur GitHub",
-    "Linux : Dirty Frag, Copy Fail et Fragnesia interrogent le rythme des correctifs",
+    "Fraude Apple : 47 millions de dollars détournés via cartes-cadeaux",
+    "Starship V3 réussit l’essentiel de son premier vol d’essai",
     "Alan alerte ses clients après une fuite chez le prestataire Almerys",
     "Smartphones : Apple, Meta et Google renforcent les modes anti-spyware"
   ],
@@ -735,20 +735,20 @@ const ACTU_DATA = {
       "url": "https://thehackernews.com/2026/05/claude-mythos-ai-finds-10000-high.html"
     },
     {
-      "cat": "Dev",
-      "title": "Packagist : 8 paquets infectés par malware Linux",
-      "summary": "The Hacker News signale une attaque supply chain visant Packagist : huit paquets PHP auraient servi à distribuer un malware Linux hébergé sur GitHub. Le signal est fort pour les équipes qui consomment des dépendances Composer.",
-      "impact": "Élevé",
-      "time": "The Hacker News · 23 mai",
-      "url": "https://thehackernews.com/2026/05/packagist-supply-chain-attack-infects-8.html"
+      "cat": "Sécurité",
+      "title": "Apple : fraude massive aux cartes-cadeaux",
+      "summary": "01net décrit un réseau criminel chinois accusé d’avoir détourné 47 millions de dollars via des cartes-cadeaux Apple compromises en magasin. L’affaire illustre le poids économique de la fraude physique-numérique et ses effets sur l’écosystème Apple.",
+      "impact": "Moyen",
+      "time": "01net · 24 mai",
+      "url": "https://www.01net.com/actualites/fraude-a-la-carte-cadeau-apple-un-reseau-criminel-chinois-a-detourne-47-millions-de-dollars.html"
     },
     {
-      "cat": "Système",
-      "title": "Linux : une série de failles root inquiète",
-      "summary": "The Register met en perspective Dirty Frag, Copy Fail et Fragnesia, trois alertes récentes d’élévation de privilèges Linux. Important : le sujet dépasse une CVE isolée et pose la question du patching rapide des noyaux en production.",
-      "impact": "Élevé",
-      "time": "The Register · 23 mai",
-      "url": "https://www.theregister.com/security/2026/05/23/dirty-frag-copy-fail-fragnesia-the-start-of-a-worrisome-linux-security-trend/5244742"
+      "cat": "Espace",
+      "title": "Starship V3 réussit un vol encore perfectible",
+      "summary": "Ars Technica rapporte que le premier vol de Starship V3 a été globalement réussi, malgré des progrès encore nécessaires avant l’orbite basse complète. Le programme reste central pour les ambitions lunaires, martiennes et commerciales de SpaceX.",
+      "impact": "Moyen",
+      "time": "Ars Technica · 23 mai",
+      "url": "https://arstechnica.com/space/2026/05/spacexs-starship-v3-still-a-work-in-progress-mostly-successful-on-first-flight/"
     },
     {
       "cat": "Sécurité",
@@ -844,21 +844,21 @@ const VEILLE_DATA = [
   },
   {
     "cat": "Cloud",
-    "title": "BigQuery ouvre davantage Apache Iceberg",
-    "summary": "InfoQ résume les annonces Google Cloud autour du support cross-engine Iceberg dans BigQuery, dont un catalogue REST serverless en préversion. À suivre pour les architectures data lakehouse et l’interopérabilité entre moteurs.",
+    "title": "AWS MCP Server passe en disponibilité générale",
+    "summary": "InfoQ indique que le serveur MCP managé d’AWS couvre désormais l’ensemble des API avec gouvernance IAM. À tester prudemment pour donner aux agents IA un accès contrôlé à la documentation, aux workflows et aux opérations cloud.",
     "impact": "Moyen",
     "source": "InfoQ",
-    "time": "Google Cloud · 23 mai",
-    "url": "https://www.infoq.com/news/2026/05/google-cross-engine-iceberg/"
+    "time": "AWS · 24 mai",
+    "url": "https://www.infoq.com/news/2026/05/aws-mcp-ga/"
   },
   {
-    "cat": "Cloud",
-    "title": "Cloudflare CASB ajoute le suivi Claude",
-    "summary": "Cloudflare annonce le support de l’API de conformité Claude dans son CASB. Le point utile : mieux inventorier les usages Anthropic, contrôler les flux IA et encadrer les agents dans les environnements SaaS.",
-    "impact": "Moyen",
-    "source": "Cloudflare",
-    "time": "Claude · 21 mai",
-    "url": "https://blog.cloudflare.com/casb-anthropic-integration/"
+    "cat": "DevOps",
+    "title": "Laravel Lang : paquets détournés via Composer",
+    "summary": "BleepingComputer signale une compromission de paquets Laravel Lang diffusant un voleur d’identifiants après abus de tags GitHub. À faire : contrôler composer.lock, purger les versions touchées et renforcer la validation des dépendances.",
+    "impact": "Élevé",
+    "source": "BleepingComputer",
+    "time": "Composer · 23 mai",
+    "url": "https://www.bleepingcomputer.com/news/security/laravel-lang-packages-hijacked-to-deploy-credential-stealing-malware/"
   }
 ];
 const RECO_DATA = [
