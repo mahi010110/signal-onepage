@@ -710,61 +710,61 @@ function scrollTo(hash){document.querySelector(hash)?.scrollIntoView({behavior:'
 // ── DONNÉES SOURCÉES ──
 const ACTU_DATA = {
   "ticker": [
-    "HP enquête sur des BIOS qui bloquent des stations mobiles premium",
-    "Underminr : 88 millions de domaines pourraient masquer du trafic C2",
-    "Claude Mythos : Anthropic revendique 10 000 failles graves trouvées par IA",
-    "Fraude Apple : 47 millions de dollars détournés via cartes-cadeaux",
-    "Alan alerte ses clients après une fuite chez le prestataire Almerys",
-    "Smartphones : Apple, Meta et Google renforcent les modes anti-spyware"
+    "Synology regroupe C2 dans OneStorage avec possibles hausses de prix",
+    "La BCE convoque les banques européennes sur les failles trouvées par Claude Mythos",
+    "Microsoft réduit l’usage interne de Claude Code après quatre mois",
+    "Google pousse AI Mode, au risque de retenir le trafic dans Search",
+    "Google prépare une API SynthID pour détecter les contenus générés par IA",
+    "7-Eleven notifie une fuite touchant 185 000 personnes"
   ],
   "news": [
     {
-      "cat": "Matériel",
-      "title": "HP enquête sur des BIOS qui bloquent des laptops pro",
-      "summary": "The Register rapporte que des mises à jour BIOS critiques poussées via Windows Update provoquent gels au démarrage, lenteurs, ventilateurs anormaux et BSOD sur des ZBook et EliteBook premium. C’est important pour les parcs IT : un firmware automatique peut immobiliser des postes coûteux.",
+      "cat": "Cloud",
+      "title": "Synology refond son cloud C2 en OneStorage",
+      "summary": "Next.ink rapporte que Synology regroupe ses offres C2 dans OneStorage, avec un changement imposé aux nouveaux comme aux anciens clients et des hausses possibles. C’est important pour les particuliers avancés et petites équipes qui s’appuient sur C2 pour sauvegarde, stockage ou reprise d’activité.",
       "impact": "Moyen",
-      "time": "The Register · 24 mai",
-      "url": "https://www.theregister.com/personal-tech/2026/05/24/hp-investigating-bios-updates-that-leave-premium-laptop-users-in-boot-loop-limbo/5244769"
+      "time": "Next.ink · 26 mai",
+      "url": "https://next.ink/239131/onestorage-synology-chamboule-son-cloud-public-c2-attention-aux-hausses-de-prix/"
     },
     {
       "cat": "Sécurité",
-      "title": "Underminr brouille les défenses DNS",
-      "summary": "SecurityWeek rapporte qu’Underminr touche environ 88 millions de domaines et peut permettre de cacher des connexions malveillantes derrière des domaines de confiance. Le sujet compte pour les équipes réseau : filtrage DNS, proxy et détection C2 peuvent perdre en lisibilité.",
+      "title": "La BCE s’inquiète des failles trouvées par Mythos",
+      "summary": "Next.ink indique que la Banque centrale européenne convoque les grandes banques de la zone euro autour des vulnérabilités mises au jour par Claude Mythos. L’épisode montre que les découvertes massives par IA deviennent un sujet de supervision financière, pas seulement de laboratoire cyber.",
       "impact": "Élevé",
-      "time": "SecurityWeek · 23 mai",
-      "url": "https://www.securityweek.com/underminr-vulnerability-lets-attackers-hide-malicious-connections-behind-trusted-domains/"
+      "time": "Next.ink · 25 mai",
+      "url": "https://next.ink/239038/cybersecurite-la-bce-sinquiete-de-mythos-et-convoque-les-banques-europeennes/"
     },
     {
       "cat": "IA",
-      "title": "Claude Mythos accélère la chasse aux failles",
-      "summary": "The Hacker News rapporte qu’Anthropic attribue à Claude Mythos la découverte de plus de 10 000 vulnérabilités sévères dans des logiciels utilisés à grande échelle. L’IA devient un accélérateur de détection, mais aussi un défi pour prioriser et corriger.",
+      "title": "Claude Code recule chez Microsoft",
+      "summary": "01net rapporte que Microsoft annule l’essentiel de ses licences Claude Code après avoir encouragé ses développeurs à l’utiliser, officiellement pour privilégier ses outils internes et sur fond de coûts élevés. Le signal compte pour mesurer le prix réel des assistants de code agentiques à grande échelle.",
+      "impact": "Moyen",
+      "time": "01net · 26 mai",
+      "url": "https://www.01net.com/actualites/claude-code-chez-microsoft-pourquoi-la-lune-de-miel-naura-dure-que-quatre-mois.html"
+    },
+    {
+      "cat": "IA",
+      "title": "Google Search retient davantage le trafic avec l’IA",
+      "summary": "The Register analyse la bascule d’AI Mode : Google Search ne se contente plus d’orienter vers les sites, il synthétise et garde l’utilisateur dans son interface. C’est un enjeu majeur pour le web ouvert, les médias et l’économie du référencement.",
       "impact": "Élevé",
-      "time": "The Hacker News · 23 mai",
-      "url": "https://thehackernews.com/2026/05/claude-mythos-ai-finds-10000-high.html"
+      "time": "The Register · 25 mai",
+      "url": "https://www.theregister.com/ai-ml/2026/05/25/google-is-cannibalizing-the-web-to-feed-ai/5244641"
+    },
+    {
+      "cat": "IA",
+      "title": "SynthID s’étend à la détection de contenus IA",
+      "summary": "InfoQ signale que Google ouvre en préversion une API de détection SynthID sur Google Cloud, avec des partenaires comme Shutterstock, Snap, Fox Sports ou Canva. L’annonce compte pour l’étiquetage des médias synthétiques et la lutte contre la fraude documentaire.",
+      "impact": "Moyen",
+      "time": "InfoQ · 26 mai",
+      "url": "https://www.infoq.com/news/2026/05/google-synthid-content-detection/"
     },
     {
       "cat": "Sécurité",
-      "title": "Apple : fraude massive aux cartes-cadeaux",
-      "summary": "01net décrit un réseau criminel chinois accusé d’avoir détourné 47 millions de dollars via des cartes-cadeaux Apple compromises en magasin. L’affaire illustre le poids économique de la fraude physique-numérique et ses effets sur l’écosystème Apple.",
+      "title": "7-Eleven notifie une fuite de données",
+      "summary": "BleepingComputer rapporte que 7-Eleven prévient 185 000 personnes après une exposition de données personnelles. Même loin du cœur technique, l’incident rappelle que les chaînes de distribution restent des cibles sensibles et très visibles.",
       "impact": "Moyen",
-      "time": "01net · 24 mai",
-      "url": "https://www.01net.com/actualites/fraude-a-la-carte-cadeau-apple-un-reseau-criminel-chinois-a-detourne-47-millions-de-dollars.html"
-    },
-    {
-      "cat": "Sécurité",
-      "title": "Alan prévient d’une fuite chez Almerys",
-      "summary": "Next.ink indique qu’Alan a alerté les adhérents de ses entreprises clientes après une fuite de données chez Almerys, prestataire de tiers-payant. C’est un rappel concret du risque fournisseur dans les chaînes de services santé.",
-      "impact": "Moyen",
-      "time": "Next.ink · 23 mai",
-      "url": "https://next.ink/238995/alan-alerte-sur-une-fuite-de-donnees-chez-almerys-son-prestataire-de-tiers-payant/"
-    },
-    {
-      "cat": "Sécurité",
-      "title": "Spyware mobile : les modes renforcés à connaître",
-      "summary": "TechCrunch fait le point sur les protections spéciales proposées par Apple, Meta et Google contre les attaques par spyware ciblé. Utile pour les profils exposés : journalistes, responsables associatifs, dirigeants ou personnels sensibles.",
-      "impact": "Moyen",
-      "time": "TechCrunch · 23 mai",
-      "url": "https://techcrunch.com/2026/05/23/you-dont-have-to-click-anything-to-get-hacked-anymore-heres-how-to-fight-back/"
+      "time": "BleepingComputer · 26 mai",
+      "url": "https://www.bleepingcomputer.com/news/security/7-eleven-data-breach-exposes-personal-information-of-185-000-people/"
     }
   ]
 };
@@ -772,93 +772,93 @@ const ACTU_DATA = {
 const VEILLE_DATA = [
   {
     "cat": "Sécurité",
-    "title": "Ghost CMS : CVE-2026-26980 exploitée à grande échelle",
-    "summary": "BleepingComputer signale une campagne ClickFix qui exploite une injection SQL critique de Ghost CMS pour injecter du JavaScript malveillant. À faire : vérifier les instances Ghost, passer au moins en 6.19.1 et rechercher des scripts ajoutés aux contenus.",
+    "title": "CERT-In pousse le patching critique en 12 heures",
+    "summary": "The Hacker News relaie de nouvelles lignes directrices de CERT-In : corriger sous 12 heures, quand c’est faisable, les failles critiques exposées à Internet face à l’accélération des attaques assistées par IA. À retenir : réduire l’exposition, automatiser l’inventaire et préparer des fenêtres de correction rapides.",
     "impact": "Élevé",
-    "source": "BleepingComputer",
-    "time": "Ghost CMS · 24 mai",
-    "url": "https://www.bleepingcomputer.com/news/security/ghost-cms-sql-injection-flaw-exploited-in-large-scale-clickfix-campaign/"
+    "source": "The Hacker News / CERT-In",
+    "time": "CERT-In · 26 mai",
+    "url": "https://thehackernews.com/2026/05/cert-in-mandates-12-hour-patching-for.html"
+  },
+  {
+    "cat": "Sécurité",
+    "title": "KnowledgeDeliver LMS exploité via CVE-2026-5426",
+    "summary": "The Hacker News indique que la faille KnowledgeDeliver, liée à des clés ASP.NET machineKey codées en dur, a servi de zero-day pour déposer Godzilla puis Cobalt Strike. À faire : vérifier les instances exposées, appliquer les correctifs et rechercher des traces ViewState anormales.",
+    "impact": "Élevé",
+    "source": "The Hacker News",
+    "time": "LMS · 26 mai",
+    "url": "https://thehackernews.com/2026/05/knowledgedeliver-lms-flaw-exploited-to.html"
   },
   {
     "cat": "DevOps",
-    "title": "npm renforce publication 2FA et installation",
-    "summary": "The Hacker News détaille de nouveaux garde-fous npm : publication conditionnée à la 2FA et contrôles d’installation de paquets. À activer côté projets Node pour réduire le risque de prise de contrôle de dépendances.",
+    "title": "TrapDoor vise npm, PyPI et Crates.io",
+    "summary": "The Hacker News décrit une attaque supply chain coordonnée : plus de 34 paquets malveillants et 384 versions diffusent un voleur de secrets visant wallets, clés SSH, jetons cloud et variables d’environnement. À faire : auditer lockfiles, dépôts et hooks Git, puis révoquer les secrets exposés.",
     "impact": "Élevé",
-    "source": "The Hacker News",
-    "time": "npm · 23 mai",
-    "url": "https://thehackernews.com/2026/05/npm-adds-2fa-gated-publishing-and.html"
+    "source": "The Hacker News / Socket",
+    "time": "Supply chain · 25 mai",
+    "url": "https://thehackernews.com/2026/05/trapdoor-supply-chain-attack-spreads.html"
   },
   {
     "cat": "Sécurité",
-    "title": "Apex One : CVE-2026-34926 exploitée",
-    "summary": "TrendAI confirme au moins une tentative d’exploitation de CVE-2026-34926 sur Apex One on-premise. À faire : vérifier les builds, appliquer le correctif disponible et surveiller les serveurs de gestion endpoint.",
+    "title": "Kali365 cible Microsoft 365 via device code",
+    "summary": "BleepingComputer relaie une alerte FBI sur Kali365, plateforme de phishing-as-a-service qui abuse du flux OAuth device code pour voler des jetons de session et contourner la MFA. À vérifier : politiques Entra, consentements OAuth, logs device code et accès conditionnel.",
     "impact": "Élevé",
-    "source": "TrendAI",
-    "time": "Apex One · 21 mai",
-    "url": "https://success.trendmicro.com/en-US/solution/KA-0023430"
-  },
-  {
-    "cat": "Réseau",
-    "title": "UniFi OS : trois failles critiques à corriger",
-    "summary": "BleepingComputer signale trois vulnérabilités de sévérité maximale dans UniFi OS, exploitables à distance sans privilèges selon l’alerte publiée autour du correctif. Les consoles et serveurs UniFi doivent passer sur les versions corrigées.",
-    "impact": "Élevé",
-    "source": "BleepingComputer",
-    "time": "Ubiquiti · 22 mai",
-    "url": "https://www.bleepingcomputer.com/news/security/ubiquiti-patches-three-max-severity-unifi-os-vulnerabilities/"
+    "source": "BleepingComputer / FBI",
+    "time": "Microsoft 365 · 25 mai",
+    "url": "https://www.bleepingcomputer.com/news/security/fbi-warns-of-kali365-phishing-service-targeting-microsoft-365-accounts/"
   },
   {
     "cat": "Sécurité",
-    "title": "Drupal Core : injection SQL déjà dans le KEV",
-    "summary": "CISA a ajouté CVE-2026-9082, une injection SQL Drupal Core, au catalogue KEV après exploitation active. Action : appliquer les versions Drupal corrigées, vérifier les modules exposés et contrôler les journaux web.",
+    "title": "Drupal CVE-2026-9082 : échéance CISA au 27 mai",
+    "summary": "BleepingComputer indique que CISA impose aux agences fédérales de corriger l’injection SQL Drupal activement exploitée avant le 27 mai, après des milliers de tentatives observées. À faire : patcher Drupal, contrôler les sites PostgreSQL et surveiller les journaux web.",
     "impact": "Élevé",
-    "source": "CISA / Drupal",
-    "time": "Drupal · 23 mai",
-    "url": "https://www.drupal.org/sa-core-2026-004"
-  },
-  {
-    "cat": "Sécurité",
-    "title": "LiteSpeed cPanel : CVE-2026-48172 en root",
-    "summary": "The Hacker News signale l’exploitation de CVE-2026-48172 dans le plugin LiteSpeed pour cPanel, permettant l’exécution de scripts avec privilèges root. À vérifier vite sur hébergements WHM/cPanel et mutualisés.",
-    "impact": "Élevé",
-    "source": "The Hacker News",
-    "time": "cPanel · 23 mai",
-    "url": "https://thehackernews.com/2026/05/litespeed-cpanel-plugin-cve-2026-48172.html"
+    "source": "BleepingComputer / CISA",
+    "time": "Drupal · 26 mai",
+    "url": "https://www.bleepingcomputer.com/news/security/cisa-orders-feds-to-patch-actively-exploited-drupal-vulnerability/"
   },
   {
     "cat": "Linux",
-    "title": "Red Hat : avis CERT-FR noyau Linux du 22 mai",
-    "summary": "L’avis CERTFR-2026-AVI-0640 regroupe plusieurs bulletins RHSA liés au noyau Linux de Red Hat. Bon réflexe admin : inventaire, priorité selon exposition, fenêtre de maintenance et vérification post-redémarrage.",
-    "impact": "Élevé",
-    "source": "CERT-FR",
-    "time": "Red Hat · 22 mai",
-    "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0640/"
+    "title": "Linux prépare ML-KEM et X-Wing post-quantique",
+    "summary": "Phoronix signale des correctifs de preuve de concept proposés par Eric Biggers pour ajouter ML-KEM et X-Wing au noyau Linux. À suivre pour l’anticipation crypto post-quantique côté systèmes, VPN, stockage chiffré et distributions.",
+    "impact": "Moyen",
+    "source": "Phoronix",
+    "time": "Linux · 26 mai",
+    "url": "https://www.phoronix.com/news/Linux-PoC-ML-KEM-X-Wing"
   },
   {
     "cat": "IA",
-    "title": "Agents IA : les “skills” deviennent surface d’attaque",
-    "summary": "The Register relaie des travaux montrant que de petites modifications dans les instructions textuelles des skills peuvent détourner des agents IA. À retenir pour les équipes : signer, relire et isoler les compétences importées.",
+    "title": "MDASH automatise la recherche de vulnérabilités",
+    "summary": "InfoQ décrit MDASH, plateforme Microsoft avec plus de 100 agents spécialisés pour scanner, débattre, valider et prouver des failles dans de grands codebases comme Windows, Hyper-V ou Azure. À retenir : l’audit sécurisé par agents arrive dans les chaînes de recherche vulnérabilité.",
     "impact": "Moyen",
-    "source": "The Register",
-    "time": "Agents IA · 22 mai",
-    "url": "https://www.theregister.com/ai-ml/2026/05/22/minor-edits-to-ai-skills-can-make-agents-go-rogue/5245413"
+    "source": "InfoQ / Microsoft",
+    "time": "AI security · 25 mai",
+    "url": "https://www.infoq.com/news/2026/05/microsoft-mdash/"
+  },
+  {
+    "cat": "Sécurité",
+    "title": "Nimbus Manticore déploie MiniFast et MiniJunk v2",
+    "summary": "The Hacker News rapporte une campagne iranienne visant aviation et logiciels avec hameçonnage, SEO poisoning et backdoor MiniFast apparemment aidée par l’IA. À surveiller : faux installateurs Zoom ou SQL Developer, archives de recrutement et exécution DLL suspecte.",
+    "impact": "Moyen",
+    "source": "The Hacker News / Check Point",
+    "time": "Threat intel · 26 mai",
+    "url": "https://thehackernews.com/2026/05/iranian-hackers-deploy-minifast-and.html"
+  },
+  {
+    "cat": "IA",
+    "title": "Agents IA : clarifier harness, scaffold et skills",
+    "summary": "Hugging Face publie un glossaire pratique sur les termes d’agents IA : harness, scaffold, contexte, policy, tool use, skills et sub-agents. Utile pour cadrer une architecture agentique sans confondre modèle, orchestration et garde-fous opérationnels.",
+    "impact": "Faible",
+    "source": "Hugging Face",
+    "time": "Agents IA · 25 mai",
+    "url": "https://huggingface.co/blog/agent-glossary"
   },
   {
     "cat": "Cloud",
-    "title": "AWS MCP Server passe en disponibilité générale",
-    "summary": "InfoQ indique que le serveur MCP managé d’AWS couvre désormais l’ensemble des API avec gouvernance IAM. À tester prudemment pour donner aux agents IA un accès contrôlé à la documentation, aux workflows et aux opérations cloud.",
+    "title": "Kafka cloud-native : réduire la prolifération des schémas",
+    "summary": "InfoQ publie un article sur la prolifération des schémas dans les pipelines Kafka et Flink, avec des pistes d’architecture pour garder gouvernance et compatibilité. À lire si tu manipules streaming, data platform ou contrats d’événements entre services.",
     "impact": "Moyen",
     "source": "InfoQ",
-    "time": "AWS · 24 mai",
-    "url": "https://www.infoq.com/news/2026/05/aws-mcp-ga/"
-  },
-  {
-    "cat": "DevOps",
-    "title": "Laravel Lang : paquets détournés via Composer",
-    "summary": "BleepingComputer signale une compromission de paquets Laravel Lang diffusant un voleur d’identifiants après abus de tags GitHub. À faire : contrôler composer.lock, purger les versions touchées et renforcer la validation des dépendances.",
-    "impact": "Élevé",
-    "source": "BleepingComputer",
-    "time": "Composer · 23 mai",
-    "url": "https://www.bleepingcomputer.com/news/security/laravel-lang-packages-hijacked-to-deploy-credential-stealing-malware/"
+    "time": "Kafka · 25 mai",
+    "url": "https://www.infoq.com/articles/schema-proliferation-problem/"
   }
 ];
 const RECO_DATA = [
